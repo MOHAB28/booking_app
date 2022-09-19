@@ -49,15 +49,16 @@ class _HomePageState extends State<HomePage> {
           return Column(
             children: [
               TextButton(
-                  onPressed: () {
-                    BlocProvider.of<LoginCubit>(context).login(
-                      const LoginInputCubit(
-                        email: 'mohab15@gmail.com',
-                        password: '123456',
-                      ),
-                    );
-                  },
-                  child: const Text('Login')),
+                onPressed: () {
+                  BlocProvider.of<LoginCubit>(context).login(
+                    const LoginInputCubit(
+                      email: 'mohab15@gmail.com',
+                      password: '123456',
+                    ),
+                  );
+                },
+                child: const Text('Login Button'),
+              ),
             ],
           );
         },
