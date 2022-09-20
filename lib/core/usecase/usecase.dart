@@ -5,4 +5,6 @@ abstract class BaseUseCase<In, Out> {
   Future<Either<PrimaryServerException, Out>> call(In input);
 }
 
-class NoParams {}
+class NoParams { 
+  
+}
