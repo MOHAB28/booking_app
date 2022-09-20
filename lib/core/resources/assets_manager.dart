@@ -1,10 +1,6 @@
 const String imagePath = 'assets/images';
 const String jsonPath = 'assets/json';
 
-class ImageAssets {
+class ImageAssets {}
 
-}
-
-class JsonAssets {
-  
-}
+class JsonAssets {}
