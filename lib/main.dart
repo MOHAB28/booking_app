@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 },
-                child: const Text('Login Button with aly now'),
+                child: const Text('Login Button with aly'),
               ),
             ],
           );

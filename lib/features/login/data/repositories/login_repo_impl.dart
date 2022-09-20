@@ -11,7 +11,7 @@ class LoginRepoImpl implements LoginRepo {
   LoginRepoImpl(this._networkInfo, this._remoteDataSources);
   @override
   Future<Either<PrimaryServerException, LoginEntity>> login(
-    LoginInput input,
+    LoginInput input
   ) async {
     if (await _networkInfo.isConnected) {
       final data = await _remoteDataSources.login(input);
