@@ -7,6 +7,7 @@ import 'features/login/presentation/cubit/login_cubit.dart';
 import 'core/network/dio_helper.dart';
 import 'features/login/data/repositories/login_repo_impl.dart';
 import 'features/login/domain/repositories/login_repo.dart';
+
 final sl = GetIt.instance;
 
 Future<void> init() async {
@@ -15,19 +16,19 @@ Future<void> init() async {
   sl.registerFactory(
     () => LoginCubit(sl()),
   );
+  
   // Use cases
 
-    sl.registerLazySingleton(() => LoginUsecase(sl()));
-
+  sl.registerLazySingleton(() => LoginUsecase(sl()));
 
   // Repository
 
- sl.registerLazySingleton<LoginRepo>(
+  sl.registerLazySingleton<LoginRepo>(
     () => LoginRepoImpl(sl(), sl()),
   );
   // Data sources
 
-    sl.registerLazySingleton<LoginRemoteDataSources>(
+  sl.registerLazySingleton<LoginRemoteDataSources>(
     () => LoginRemoteDataSourcesImpl(sl()),
   );
 
@@ -40,4 +41,3 @@ Future<void> init() async {
   //! External
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }
-
