@@ -13,7 +13,7 @@ class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
   final LoginEntity data;
-LoginSuccess({required this.data});
+  const LoginSuccess({required this.data});
 }
 
 class LoginFailure extends LoginState {}
