@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/resources/routes.dart';
+import 'core/resources/theme_manager.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
 import 'injection_container.dart';
 
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo m.Maher',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        themeMode: ThemeMode.light,
+        theme: getApplicationLighTheme(),
+        darkTheme: getApplicationDarkTheme(),
         routes: Routes.routes,
         initialRoute: Routes.home,
       ),
