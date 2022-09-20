@@ -10,9 +10,6 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-// Saba7 elfol from mo7amedy commit no.2 :)
-// this is from mo7amedy bardo
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -60,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 },
-                child: const Text('aly'),
+                child: const Text('mohab'),
               ),
             ],
           );
