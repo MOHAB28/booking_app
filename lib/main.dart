@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phase3/features/register/presentation/cubit/register_cubit.dart';
 import 'core/resources/routes.dart';
 import 'core/resources/theme_manager.dart';
+import 'features/get_hotels/presentation/cubit/get_hotels_cubit.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
 import 'features/register/presentation/cubit/register_state.dart';
 import 'injection_container.dart';
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => sl<GetHotelsCubit>()),
+        BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<RegisterCubit>()),
       ],
       child: MaterialApp(
