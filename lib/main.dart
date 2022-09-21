@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phase3/features/login/presentation/pages/welcome_onboarding_page.dart';
 import 'core/resources/routes.dart';
 import 'core/resources/theme_manager.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
@@ -24,9 +25,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo m.Maher',
         themeMode: ThemeMode.light,
-        theme: getApplicationLighTheme(),
+        theme: getApplicationLightTheme(),
         darkTheme: getApplicationDarkTheme(),
-        routes: Routes.routes,
+        //routes: Routes.routes,
+        home: const WelcomeOnBoarding(),
         initialRoute: Routes.home,
       ),
     );

@@ -6,7 +6,7 @@ import 'font_manager.dart';
 import 'styles_manager.dart';
 import 'values_manager.dart';
 
-ThemeData getApplicationLighTheme() {
+ThemeData getApplicationLightTheme() {
   return ThemeData(
     scaffoldBackgroundColor: ColorManager.sWhite,
     // app bar theme
