@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phase3/features/register/presentation/cubit/register_cubit.dart';
 import 'core/resources/routes.dart';
 import 'core/resources/theme_manager.dart';
-import 'features/get_hotels/presentation/cubit/get_hotels_cubit.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
+import 'features/register/presentation/cubit/register_state.dart';
 import 'injection_container.dart';
 
 Future<void> main() async {
@@ -19,8 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => sl<LoginCubit>()),
-        BlocProvider(create: (context) => sl<GetHotelsCubit>()),
+        BlocProvider(create: (context) => sl<RegisterCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -47,25 +47,30 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: BlocConsumer<GetHotelsCubit, GetHotelsState>(
+      body: BlocConsumer<RegisterCubit, RegisterState>(
         builder: (context, state) {
           return Column(
             children: [
               TextButton(
                 onPressed: () {
-                  BlocProvider.of<GetHotelsCubit>(context).getHotels(
-                    1
+                  BlocProvider.of<RegisterCubit>(context).register(
+                    const RegisterInputCubit(
+                      email: 'mohamed.maher3@gmail.com',
+                      password: '123456',
+                      name: 'mohamed maher3',
+                      passwordConfirm: '123456',
+                    ),
                   );
                 },
-                child: const Text('mohab'),
+                child: const Text('register'),
               ),
             ],
           );
         },
         listener: (context, state) {
-          if (state is GethotelsLoaded) {
+          if (state is RegisterSuccess) {
             debugPrint(
-                '${state.data.status} ${state.data.getAllHotelsData.linksData}');
+                '${state.data.status} ${state.data.registerDataEntity.name}');
           }
         },
       ),
