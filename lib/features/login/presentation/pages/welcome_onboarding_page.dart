@@ -9,11 +9,22 @@ class WelcomeOnBoarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: Image.asset(
-        ImageAssets.welcomeOnBoarding,
-        fit: BoxFit.cover,
-        height: double.infinity,
-        width: double.infinity,
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: 700.0,
+          child: Column(
+            children: [
+              Expanded(
+                child: Image.asset(
+                  ImageAssets.welcomeOnBoarding,
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
