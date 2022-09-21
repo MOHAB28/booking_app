@@ -146,7 +146,7 @@ extension on DioHelper {
       );
     } catch (e) {
       PrimaryServerException exception = e as PrimaryServerException;
-
+      print(e.toString());
       throw PrimaryServerException(
         code: exception.code,
         error: exception.error,
