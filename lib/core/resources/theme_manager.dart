@@ -124,7 +124,7 @@ ThemeData getApplicationDarkTheme() {
     appBarTheme: AppBarTheme(
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
       ),
       centerTitle: false,
       backgroundColor: ColorManager.sBlack,

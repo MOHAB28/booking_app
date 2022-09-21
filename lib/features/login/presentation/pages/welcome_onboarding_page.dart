@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phase3/core/resources/assets_manager.dart';
 import 'package:phase3/core/resources/strings_manager.dart';
+import 'package:phase3/features/login/presentation/pages/onboarding_page.dart';
 import 'package:phase3/features/login/presentation/widgets/my_button.dart';
+
+import '../../../../core/resources/routes.dart';
 
 class WelcomeOnBoarding extends StatelessWidget {
   const WelcomeOnBoarding({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +49,12 @@ class WelcomeOnBoarding extends StatelessWidget {
                           left: 20.0
                         ),
                         child: MyButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                  Routes.onBoarding
+                              );
+                            },
                             text: AppStrings.getStarted,
                         ),
                       ),

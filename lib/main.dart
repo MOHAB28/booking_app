@@ -24,11 +24,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo m.Maher',
-        themeMode: ThemeMode.light,
+        themeMode: ThemeMode.dark,
         theme: getApplicationLightTheme(),
         darkTheme: getApplicationDarkTheme(),
-        //routes: Routes.routes,
-        home: const WelcomeOnBoarding(),
+        routes: Routes.routes,
         initialRoute: Routes.home,
       ),
     );
