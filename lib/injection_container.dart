@@ -16,13 +16,11 @@ import 'features/login/domain/repositories/login_repo.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  //! Features - Login
+  //! Features
 
   sl.registerFactory(
     () => LoginCubit(sl()),
   );
-
-  //! Features - Get Hotels
 
   sl.registerFactory(
     () => GetHotelsCubit(sl()),
