@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/resources/routes.dart';
 import 'core/resources/theme_manager.dart';
+import 'features/get_hotels/presentation/cubit/get_hotels_cubit.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
 import 'injection_container.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => sl<LoginCubit>()),
+        BlocProvider(create: (context) => sl<GetHotelsCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -45,17 +47,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: BlocConsumer<LoginCubit, LoginState>(
+      body: BlocConsumer<GetHotelsCubit, GetHotelsState>(
         builder: (context, state) {
           return Column(
             children: [
               TextButton(
                 onPressed: () {
-                  BlocProvider.of<LoginCubit>(context).login(
-                    const LoginInputCubit(
-                      email: 'mohab15@gmail.com',
-                      password: '123456',
-                    ),
+                  BlocProvider.of<GetHotelsCubit>(context).getHotels(
+                    1
                   );
                 },
                 child: const Text('mohab'),
@@ -64,9 +63,9 @@ class _HomePageState extends State<HomePage> {
           );
         },
         listener: (context, state) {
-          if (state is LoginSuccess) {
+          if (state is GethotelsLoaded) {
             debugPrint(
-                '${state.data.status} ${state.data.loginDataEntity.name}');
+                '${state.data.status} ${state.data.getAllHotelsData.linksData}');
           }
         },
       ),
