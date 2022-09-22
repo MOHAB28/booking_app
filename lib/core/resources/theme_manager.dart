@@ -50,70 +50,58 @@ ThemeData getApplicationLighTheme() {
     ),
 
     // _______/ It will be updated \_________________________
-    // textTheme: TextTheme(
-    //   titleLarge: getBoldStyle(
-    //     fontSize: FontSize.s20,
-    //     color: ColorManager.black,
-    //   ),
-    //   // -- newsCardtitleTextStyle --
-    //   titleMedium: getBoldStyle(
-    //     color: Colors.black,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   // const -- popularCardTitleTextStyle --
-    //   titleSmall: getLightStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   bodyLarge: getMediumStyle(
-    //     color: Colors.black,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   //const -- newsCardtitleTextStyle --
-    //   bodyMedium: getMediumStyle(
-    //     color: Colors.grey,
-    //     fontSize: FontSize.s12,
-    //   ),
-    //   // const -- popularCardDateTextStyle --
-    //   bodySmall: getLightStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s12,
-    //   ),
-    // ),
+    textTheme: TextTheme(
+      titleLarge: getBoldStyle(
+        fontSize: FontSize.s22,
+        color: Colors.black,
+      ),
+      titleMedium: getBoldStyle(
+        fontSize: FontSize.s18,
+        color: Colors.black,
+      ),
+      displayMedium: getRegularStyle(
+        color: Colors.black,
+        fontSize: FontSize.s18,
+      ),
+      bodySmall: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s16,
+      ),
+    ),
     // input decoration theme (text form field)
     // inputDecorationTheme:  InputDecorationTheme(
-        //   // content padding
-        //   contentPadding: const EdgeInsets.all(AppPadding.p8),
-        //   // hint style
-        //   hintStyle: getRegularStyle(
-        //       color: ColorManager.lightGrey, fontSize: FontSize.s14),
-        //   labelStyle:
-        //       getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
-        //   errorStyle: getRegularStyle(color: ColorManager.error),
+    //   // content padding
+    //   contentPadding: const EdgeInsets.all(AppPadding.p8),
+    //   // hint style
+    //   hintStyle: getRegularStyle(
+    //       color: ColorManager.lightGrey, fontSize: FontSize.s14),
+    //   labelStyle:
+    //       getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
+    //   errorStyle: getRegularStyle(color: ColorManager.error),
 
-        //   // enabled border style
-        //   enabledBorder: const OutlineInputBorder(
-        //     borderSide:
-        //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-        //   ),
+    //   // enabled border style
+    //   enabledBorder: const OutlineInputBorder(
+    //     borderSide:
+    //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
+    //   ),
 
-        //   // focused border style
-        //   focusedBorder: const OutlineInputBorder(
-        //     borderSide:
-        //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-        //   ),
+    //   // focused border style
+    //   focusedBorder: const OutlineInputBorder(
+    //     borderSide:
+    //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
+    //   ),
 
-        //   // error border style
-        //   errorBorder: const OutlineInputBorder(
-        //     borderSide: BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-        //   ),
-        //   // focused border style
-        //   focusedErrorBorder: const OutlineInputBorder(
-        //     borderSide:
-        //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-        //   ),
-        //   // label style
-        // ),
+    //   // error border style
+    //   errorBorder: const OutlineInputBorder(
+    //     borderSide: BorderSide(color: ColorManager.error, width: AppSize.s1_5),
+    //   ),
+    //   // focused border style
+    //   focusedErrorBorder: const OutlineInputBorder(
+    //     borderSide:
+    //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
+    //   ),
+    //   // label style
+    // ),
   );
 }
 
@@ -132,7 +120,7 @@ ThemeData getApplicationDarkTheme() {
       elevation: AppSize.s0,
       titleTextStyle: getMediumStyle(
         fontSize: FontSize.s18,
-         color: Colors.white, // It will be changed
+        color: Colors.white, // It will be changed
         // color: ColorManager.white,
       ),
     ),
@@ -150,37 +138,24 @@ ThemeData getApplicationDarkTheme() {
       color: Colors.white,
     ),
 
-    // textTheme: TextTheme(
-    //   titleLarge: getBoldStyle(
-    //     fontSize: FontSize.s20,
-    //     color: ColorManager.white,
-    //   ),
-    //   // -- newsCardtitleTextStyle --
-    //   titleMedium: getBoldStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   // const -- popularCardTitleTextStyle --
-    //   titleSmall: getLightStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //    bodyLarge: getMediumStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   //const -- newsCardtitleTextStyle --
-    //   bodyMedium: getMediumStyle(
-    //     color: Colors.grey,
-    //     fontSize: FontSize.s12,
-    //   ),
-    //   // const -- popularCardDateTextStyle --
-    //   bodySmall: getLightStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s12,
-    //   ),
-    // ),
-
+    textTheme: TextTheme(
+      titleLarge: getBoldStyle(
+        fontSize: FontSize.s22,
+        color: Colors.white,
+      ),
+      titleMedium: getBoldStyle(
+        fontSize: FontSize.s18,
+        color: Colors.white,
+      ),
+      displayMedium: getRegularStyle(
+        color: Colors.white,
+        fontSize: FontSize.s18,
+      ),
+      bodySmall: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s16,
+      ),
+    ),
     // // input decoration theme (text form field)
     // inputDecorationTheme: InputDecorationTheme(
     //   // content padding
