@@ -21,6 +21,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   LoginEntity? loginEntity;
   Future<void> login(LoginInputCubit input) async {
+    emit(LoginLoading());
     final successOrFailure = await _usecase(
       LoginUsecaseInput(
         email: input.email,
