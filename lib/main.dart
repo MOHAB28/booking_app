@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phase3/features/register/presentation/cubit/register_cubit.dart';
+import 'features/register/presentation/cubit/register_cubit.dart';
 import 'core/resources/routes.dart';
 import 'core/resources/theme_manager.dart';
 import 'features/get_hotels/presentation/cubit/get_hotels_cubit.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
+import 'features/profile/presentation/cubit/profile_cubit.dart';
 import 'features/register/presentation/cubit/register_state.dart';
 import 'injection_container.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<GetHotelsCubit>()),
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<RegisterCubit>()),
+        BlocProvider(create: (context) => sl<ProfileCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         theme: getApplicationLighTheme(),
         darkTheme: getApplicationDarkTheme(),
         routes: Routes.routes,
-        initialRoute: Routes.home,
+        initialRoute: Routes.profileTestPage,
       ),
     );
   }

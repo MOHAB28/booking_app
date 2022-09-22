@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
+
 import '../../../../core/error/exception.dart';
-import '../entities/login_entity.dart';
 import '../../../../core/usecase/usecase.dart';
+import '../entities/login_entity.dart';
 import '../repositories/login_repo.dart';
 
 class LoginUsecase extends BaseUseCase<LoginUsecaseInput, LoginEntity> {
