@@ -1,5 +1,8 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/resources/exctensions.dart';
+import '../../../../core/resources/strings_manager.dart';
 import '../../domain/entities/login_entity.dart';
 import '../../domain/usecases/login_usecase.dart';
 part 'login_state.dart';
@@ -18,6 +21,48 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(
     this._usecase,
   ) : super(LoginInitial());
+
+  static LoginCubit get(BuildContext context) => BlocProvider.of(context);
+
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+  String errorEmail = '';
+  String errorPassword = '';
+    void init() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    errorEmail = '';
+    errorPassword = '';
+    emit(LoginInit());
+  }
+  bool allValidation() {
+    bool isValid = true;
+    if (emailController.text.trim().isEmpty ||
+        !emailController.text.trim().isEmailValid()) {
+      errorEmail = AppStrings.enterAValidEm;
+      isValid = false;
+    } else {
+      errorEmail = '';
+    }
+
+    if (passwordController.text.trim().length < 6 ||
+        passwordController.text.trim().isEmpty) {
+      errorPassword = AppStrings.enterValidPass;
+      isValid = false;
+    } else {
+      errorPassword = '';
+    }
+    emit(ValidErrorState());
+    return isValid;
+  }
+
+    void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    errorEmail = '';
+    errorPassword = '';
+    emit(state);
+  }
 
   LoginEntity? loginEntity;
   Future<void> login(LoginInputCubit input) async {
