@@ -63,45 +63,55 @@ ThemeData getApplicationLighTheme() {
         color: Colors.black,
         fontSize: FontSize.s18,
       ),
+      displaySmall: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
       bodySmall: getRegularStyle(
         color: ColorManager.gGrey,
         fontSize: FontSize.s16,
       ),
     ),
     // input decoration theme (text form field)
-    // inputDecorationTheme:  InputDecorationTheme(
-    //   // content padding
-    //   contentPadding: const EdgeInsets.all(AppPadding.p8),
-    //   // hint style
-    //   hintStyle: getRegularStyle(
-    //       color: ColorManager.lightGrey, fontSize: FontSize.s14),
-    //   labelStyle:
-    //       getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
-    //   errorStyle: getRegularStyle(color: ColorManager.error),
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: Colors.white,
+      filled: true,
+      border: InputBorder.none,
+      // content padding
+      contentPadding: const EdgeInsets.all(AppPadding.p8),
+      // hint style
+      hintStyle: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      labelStyle: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      // enabled border style
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
 
-    //   // enabled border style
-    //   enabledBorder: const OutlineInputBorder(
-    //     borderSide:
-    //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-    //   ),
+      // focused border style
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
 
-    //   // focused border style
-    //   focusedBorder: const OutlineInputBorder(
-    //     borderSide:
-    //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-    //   ),
-
-    //   // error border style
-    //   errorBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-    //   ),
-    //   // focused border style
-    //   focusedErrorBorder: const OutlineInputBorder(
-    //     borderSide:
-    //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-    //   ),
-    //   // label style
-    // ),
+      // error border style
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
+      // focused border style
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
+      // label style
+    ),
   );
 }
 
@@ -151,41 +161,54 @@ ThemeData getApplicationDarkTheme() {
         color: Colors.white,
         fontSize: FontSize.s18,
       ),
+      displaySmall: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
       bodySmall: getRegularStyle(
         color: ColorManager.gGrey,
         fontSize: FontSize.s16,
       ),
     ),
     // // input decoration theme (text form field)
-    // inputDecorationTheme: InputDecorationTheme(
-    //   // content padding
-    //   contentPadding: const EdgeInsets.all(AppPadding.p8),
-    //   // hint style
-    //   hintStyle: getRegularStyle(
-    //       color: ColorManager.lightGrey, fontSize: FontSize.s14),
-    //   labelStyle:
-    //       getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
-    //   errorStyle: getRegularStyle(color: ColorManager.error),
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: ColorManager.bBlack,
+      filled: true,
+      border: InputBorder.none,
+      // content padding
+      contentPadding: const EdgeInsets.all(AppPadding.p8),
+      // hint style
+      hintStyle: getLightStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      labelStyle: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      // enabled border style
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
 
-    //   // enabled border style
-    //   enabledBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.white, width: AppSize.s1_5),
-    //   ),
+      // focused border style
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
 
-    //   // focused border style
-    //   focusedBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.white, width: AppSize.s1_5),
-    //   ),
-
-    //   // error border style
-    //   errorBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-    //   ),
-    //   // focused border style
-    //   focusedErrorBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.white, width: AppSize.s1_5),
-    //   ),
-    //   // label style
-    // ),
+      // error border style
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
+      // focused border style
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
+      // label style
+    ),
   );
 }

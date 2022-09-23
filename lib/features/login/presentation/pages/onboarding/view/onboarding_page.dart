@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../../../../../core/resources/color_manager.dart';
+import '../../../../../../core/resources/routes.dart';
 import '../../../../../../core/resources/strings_manager.dart';
 import '../../../../../../core/resources/values_manager.dart';
 import '../../../widgets/custom_button_builder.dart';
@@ -51,7 +52,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
             body: Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppPadding.p40,vertical: AppPadding.p15),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppPadding.p40, vertical: AppPadding.p15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -86,13 +88,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     CustomButtonBuilder(
                       color: ColorManager.bGreen,
                       title: AppStrings.login,
-                      onTap: (){},
+                      onTap: () =>
+                          Navigator.pushNamed(context, Routes.loginPageKey),
                     ),
                     const SizedBox(height: AppSize.s15),
                     CustomButtonBuilder(
                       color: ColorManager.bBlack,
                       title: AppStrings.creatAccount,
-                      onTap: (){},
+                      onTap: () =>
+                          Navigator.pushNamed(context, Routes.registerPageKey),
                     ),
                   ],
                 ),

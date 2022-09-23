@@ -8,6 +8,8 @@ class ColorManager {
   // Buttons
   static const Color bGreen =  Color(0xFF4EBE9F);
   static const Color bBlack =  Color(0xFF2C2C2C);
+  static const Color bFacebook =  Color(0xFF3C589A);
+  static const Color bTwitter =  Color(0xFF0FA6E7);
   
   // Generic
   static const Color gGrey =  Color(0xFF5A5A5A);

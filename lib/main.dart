@@ -7,6 +7,8 @@ import 'features/get_hotels/presentation/cubit/get_hotels_cubit.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
 import 'injection_container.dart';
 
+String? token;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await init();
