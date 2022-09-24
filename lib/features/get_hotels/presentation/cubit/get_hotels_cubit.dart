@@ -18,7 +18,10 @@ class GetHotelsCubit extends Cubit<GetHotelsState> {
     final successOrFailure = await _getHotelsUsecase(page);
     successOrFailure.fold(
       (failure) => emit(GethotelsFaiulre()),
-      (data) => emit(GethotelsLoaded(data)),
+      (data) {
+        hotelsEntity = data;
+        emit(GethotelsLoaded(data));
+      },
     );
   }
 }

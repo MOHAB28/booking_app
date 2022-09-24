@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
         darkTheme: getApplicationDarkTheme(),
         routes: Routes.routes,
         initialRoute: Routes.welcomeOnboardingPageKey,
+
       ),
     );
   }
