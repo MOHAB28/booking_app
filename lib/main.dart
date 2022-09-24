@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'features/booking/presentation/cubit/booking_cubit.dart';
 import 'features/profile/presentation/cubit/profile_cubit.dart';
 import 'features/register/presentation/cubit/register_cubit.dart';
 import 'core/resources/routes.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<RegisterCubit>()),
         BlocProvider(create: (context) => sl<ProfileCubit>()),
+        BlocProvider(create: (context) => sl<BookingCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
