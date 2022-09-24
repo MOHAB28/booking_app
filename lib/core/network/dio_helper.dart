@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
 import '../error/exception.dart';
 import 'end_points.dart';
 
@@ -146,7 +145,6 @@ extension on DioHelper {
       );
     } catch (e) {
       PrimaryServerException exception = e as PrimaryServerException;
-      print(e.toString());
       throw PrimaryServerException(
         code: exception.code,
         error: exception.error,

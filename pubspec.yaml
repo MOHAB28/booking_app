@@ -20,10 +20,13 @@ dependencies:
   dartz: ^0.10.1
   internet_connection_checker: ^0.0.1+4
   equatable: ^2.0.5
+
   smooth_page_indicator: ^1.0.0+2
   font_awesome_flutter: ^10.2.1
   google_maps_flutter: ^2.1.6
   flutter_rating_bar: ^4.0.1
+
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +37,7 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
 
   # To add assets to your application, add an assets section, like this:
   assets:

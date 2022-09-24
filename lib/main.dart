@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'features/booking/presentation/cubit/booking_cubit.dart';
+import 'features/profile/presentation/cubit/profile_cubit.dart';
 import 'features/register/presentation/cubit/register_cubit.dart';
 import 'core/resources/routes.dart';
 import 'core/resources/theme_manager.dart';
 import 'features/get_hotels/presentation/cubit/get_hotels_cubit.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
-import 'features/profile/presentation/cubit/profile_cubit.dart';
-import 'features/register/presentation/cubit/register_state.dart';
 import 'injection_container.dart';
+
+
+String? token;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +29,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<RegisterCubit>()),
         BlocProvider(create: (context) => sl<ProfileCubit>()),
+        BlocProvider(create: (context) => sl<BookingCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -34,51 +38,10 @@ class MyApp extends StatelessWidget {
         theme: getApplicationLighTheme(),
         darkTheme: getApplicationDarkTheme(),
         routes: Routes.routes,
-        initialRoute: Routes.layoutPage,
+        initialRoute: Routes.welcomeOnboardingPageKey,
+
       ),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: BlocConsumer<RegisterCubit, RegisterState>(
-        builder: (context, state) {
-          return Column(
-            children: [
-              TextButton(
-                onPressed: () {
-                  BlocProvider.of<RegisterCubit>(context).register(
-                    const RegisterInputCubit(
-                      email: 'mohamed.maher3@gmail.com',
-                      password: '123456',
-                      name: 'mohamed maher3',
-                      passwordConfirm: '123456',
-                    ),
-                  );
-                },
-                child: const Text('register'),
-              ),
-            ],
-          );
-        },
-        listener: (context, state) {
-          if (state is RegisterSuccess) {
-            debugPrint(
-                '${state.data.status} ${state.data.registerDataEntity.name}');
-          }
-        },
-      ),
-    );
-  }
-}

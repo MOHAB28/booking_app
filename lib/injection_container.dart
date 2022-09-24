@@ -1,5 +1,13 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'features/booking/data/datasources/booking_remote_data_sources.dart';
+import 'features/booking/data/repositories/booking_repo_impl.dart';
+import 'features/booking/domain/repositories/booking_repo.dart';
+import 'features/booking/domain/usecases/create_booking_usecase.dart';
+import 'features/booking/domain/usecases/get_bookings_usecase.dart';
+import 'features/booking/domain/usecases/update_booking_usecase.dart';
+import 'features/booking/presentation/cubit/booking_cubit.dart';
 import 'features/profile/domain/usecases/update_profile_use_case.dart';
 import 'features/profile/data/datasources/get_profile_remote_data_source.dart';
 import 'features/profile/data/repositories/profile_repository_implementaion.dart';
@@ -44,6 +52,14 @@ Future<void> init() async {
     () => ProfileCubit(sl(), sl()),
   );
 
+  sl.registerFactory(
+    () => BookingCubit(
+      createBookingUsecase: sl(),
+      getBookingUsecase: sl(),
+      updateBookingUsecase: sl(),
+    ),
+  );
+
   // Use cases
 
   sl.registerLazySingleton(() => LoginUsecase(sl()));
@@ -51,6 +67,9 @@ Future<void> init() async {
   sl.registerLazySingleton(() => RegisterUsecase(sl()));
   sl.registerLazySingleton(() => GetProfileUseCase(sl()));
   sl.registerLazySingleton(() => UpdateProfileUseCase(sl()));
+  sl.registerLazySingleton(() => CreateBookingUsecase(sl()));
+  sl.registerLazySingleton(() => UpdateBookingUsecase(sl()));
+  sl.registerLazySingleton(() => GetBookingUsecase(sl()));
   // Repository
 
   sl.registerLazySingleton<LoginRepo>(
@@ -65,6 +84,9 @@ Future<void> init() async {
 
   sl.registerLazySingleton<ProfileRepository>(
       () => ProfileRepositoryImplementation(sl(), sl()));
+
+  sl.registerLazySingleton<BookingRepo>(
+      () => BookingRepoImpl(sl(), sl()));
   // Data sources
 
   sl.registerLazySingleton<LoginRemoteDataSources>(
@@ -77,6 +99,10 @@ Future<void> init() async {
     () => GetHotelsRemoteDataSourcesImpl(sl()),
   );
 
+  sl.registerLazySingleton<BookingRemoteDataSources>(
+    () => BookingRemoteDataSourcesImpl(sl()),
+  );
+
   sl.registerLazySingleton<GetProfileRemoteDataSource>(
       () => GetProfileRemoteDataSourceImplementation(sl()));
 
@@ -87,5 +113,7 @@ Future<void> init() async {
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
   //! External
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }

@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../domain/usecases/update_profile_use_case.dart';
