@@ -25,7 +25,7 @@ class CommonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: padding ?? EdgeInsets.only(),
+      padding: padding ?? const EdgeInsets.only(),
       child: TapEffect(
         isClickable: isClickable!,
         onClick: onTap ?? () {},
@@ -43,7 +43,7 @@ class CommonButton extends StatelessWidget {
               child: buttonTextWidget ??
                   Text(
                     buttonText ?? "",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                     ),

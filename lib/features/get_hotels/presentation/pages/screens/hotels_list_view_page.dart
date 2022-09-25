@@ -30,11 +30,11 @@ class HotelListViewPage extends StatelessWidget {
       animation: animation,
       animationController: animationController,
       child: Padding(
-        padding: EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
+        padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
         child: CommonCard(
           color: Colors.white,
           child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
             child: AspectRatio(
               aspectRatio: 2.7,
               child: Stack(
@@ -64,14 +64,14 @@ class HotelListViewPage extends StatelessWidget {
                                 maxLines: 2,
                                 textAlign: TextAlign.left,
                                 style:
-                                TextStyle(
+                                const TextStyle(
                                   fontSize: 16,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),
                               Text(
                                 hotelData.description,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14,
                                 ),
                               ),
@@ -99,7 +99,7 @@ class HotelListViewPage extends StatelessWidget {
                                               Text(
                                                 hotelData.address ,
                                                 overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontSize: 14,
                                                 ),
                                               ),
@@ -107,7 +107,7 @@ class HotelListViewPage extends StatelessWidget {
                                           ),
                                 RatingBarIndicator(
                                   rating:double.tryParse(hotelData.rate)!.toDouble() ,
-                                  itemBuilder: (context, index) => Icon(
+                                  itemBuilder: (context, index) => const Icon(
                                     Icons.star,
                                     color:Colors.teal,
                                   ),
@@ -132,9 +132,9 @@ class HotelListViewPage extends StatelessWidget {
                                             Text(
                                               "\$${hotelData.price}",
                                               textAlign: TextAlign.left,
-                                              style: TextStyle(fontSize: 22),
+                                              style: const TextStyle(fontSize: 22),
                                             ),
-                                            Padding(
+                                            const Padding(
                                               padding: EdgeInsets.only(
                                                   top: 2.0),
                                               child: Text(

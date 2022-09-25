@@ -21,7 +21,7 @@ late AnimationController animationController;
   int currentIndex = 0;
 
   void initState ( ) {
-    animationController = AnimationController(duration: Duration(milliseconds: 400) , vsync: this);
+    animationController = AnimationController(duration: const Duration(milliseconds: 400) , vsync: this);
     BlocProvider.of<GetHotelsCubit>(context).getHotels(1);
     super.initState();
 
@@ -34,7 +34,7 @@ late AnimationController animationController;
 
     List<Widget> screens = [
       ExploreScreen(animationController: animationController,),
-      ProfileScreen(),
+      const ProfileScreen(),
     ];
 
     return Scaffold(
@@ -42,11 +42,11 @@ late AnimationController animationController;
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.teal,
         showUnselectedLabels: true,
-        selectedLabelStyle: TextStyle(
+        selectedLabelStyle: const TextStyle(
           color: Colors.teal
         ),
         unselectedItemColor: Colors.grey,
-        unselectedLabelStyle:TextStyle(
+        unselectedLabelStyle:const TextStyle(
             color: Colors.grey
         ),
         type: BottomNavigationBarType.fixed,
@@ -58,8 +58,8 @@ late AnimationController animationController;
           });
         },
         items: [
-          BottomNavigationBarItem(icon:Icon( Icons.search , size: 25,) , label: 'Explore' ,),
-          BottomNavigationBarItem(icon:Icon( Icons.person , size: 25,) , label: 'Profile'),
+          const BottomNavigationBarItem(icon:Icon( Icons.search , size: 25,) , label: 'Explore' ,),
+          const BottomNavigationBarItem(icon:Icon( Icons.person , size: 25,) , label: 'Profile'),
         ],
       ),
     );

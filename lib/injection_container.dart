@@ -31,6 +31,11 @@ import 'features/register/data/repositories/register_repo_impl.dart';
 import 'features/register/domain/repositories/register_repo.dart';
 import 'features/register/domain/usecases/register_usecase.dart';
 import 'features/register/presentation/cubit/register_cubit.dart';
+import 'features/search/data/datasources/search_remote_data_souces.dart';
+import 'features/search/data/repositories/search_repo_impl.dart';
+import 'features/search/domain/repositories/search_repo.dart';
+import 'features/search/domain/usecases/search_usecase.dart';
+import 'features/search/presentation/cubit/search_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -46,6 +51,10 @@ Future<void> init() async {
 
   sl.registerFactory(
     () => GetHotelsCubit(sl()),
+  );
+
+  sl.registerFactory(
+    () => SearchCubit(sl()),
   );
 
   sl.registerFactory(
@@ -70,10 +79,14 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CreateBookingUsecase(sl()));
   sl.registerLazySingleton(() => UpdateBookingUsecase(sl()));
   sl.registerLazySingleton(() => GetBookingUsecase(sl()));
+  sl.registerLazySingleton(() => SearchUsecase(sl()));
   // Repository
 
   sl.registerLazySingleton<LoginRepo>(
     () => LoginRepoImpl(sl(), sl()),
+  );
+  sl.registerLazySingleton<SearchRepo>(
+    () => SearchRepoImpl(sl(), sl()),
   );
   sl.registerLazySingleton<RegisterRepo>(
     () => RegisterRepoImpl(sl(), sl()),
@@ -91,6 +104,9 @@ Future<void> init() async {
 
   sl.registerLazySingleton<LoginRemoteDataSources>(
     () => LoginRemoteDataSourcesImpl(sl()),
+  );
+  sl.registerLazySingleton<SearchRemoteDataSources>(
+    () => SearchRemoteDataSourcesImpl(sl()),
   );
   sl.registerLazySingleton<RegisterRemoteDataSources>(
     () => RegisterRemoteDataSourcesImpl(sl()),

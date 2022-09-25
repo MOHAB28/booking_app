@@ -32,12 +32,12 @@ class CommonSearchBar extends StatelessWidget {
                 size: 18,
                 color: Colors.teal,
               )
-                  : SizedBox(),
+                  : const SizedBox(),
               isShow == true
-                  ? SizedBox(
+                  ? const SizedBox(
                 width: 30,
               )
-                  : SizedBox(),
+                  : const SizedBox(),
               Expanded(
                 child: TextFormField(
                   controller: textEditingController,
@@ -45,12 +45,12 @@ class CommonSearchBar extends StatelessWidget {
                   enabled: enabled,
                   onChanged: (String txt) {},
                   cursorColor: Theme.of(context).primaryColor,
-                  decoration: new InputDecoration(
-                      contentPadding: EdgeInsets.all(0),
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.all(0),
                       errorText: null,
                       border: InputBorder.none,
                       hintText: text,
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                           color: Colors.grey,
                           fontSize: 18)),
                 ),

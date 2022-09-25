@@ -23,8 +23,8 @@ class CategoryView extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return FadeTransition(
           opacity: animation,
-          child: new Transform(
-            transform: new Matrix4.translationValues(
+          child: Transform(
+            transform: Matrix4.translationValues(
                 100 * (1.0 - animation.value), 0.0, 0.0),
             child: child,
           ),
@@ -40,7 +40,7 @@ class CategoryView extends StatelessWidget {
           child: CommonCard(
             color: Colors.white,
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(15)),
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
 
               child: AspectRatio(
                 aspectRatio: 1.9,
@@ -79,7 +79,7 @@ class CategoryView extends StatelessWidget {
                                 child: Text(
                                   popularList.titleTxt,
                                   style:
-                                  TextStyle(
+                                  const TextStyle(
                                     fontSize: 24,
                                     color: Colors.white,
                                   ),
