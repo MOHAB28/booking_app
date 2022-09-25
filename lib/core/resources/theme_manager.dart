@@ -15,16 +15,19 @@ ThemeData getApplicationLighTheme() {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
-      centerTitle: false,
+      centerTitle: true,
       backgroundColor: ColorManager.sWhite,
       iconTheme: const IconThemeData(color: Colors.black),
       elevation: AppSize.s0,
-      titleTextStyle: getMediumStyle(
+      titleTextStyle: getBoldStyle(
         fontSize: FontSize.s18,
         color: Colors.black, // It will be changed
         // color: ColorManager.black,
       ),
     ),
+    primarySwatch: ColorManager.mGreen,
+
+    
 
     iconTheme: const IconThemeData(
       color: Colors.black,
@@ -124,16 +127,18 @@ ThemeData getApplicationDarkTheme() {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
-      centerTitle: false,
+      centerTitle: true,
       backgroundColor: ColorManager.sBlack,
       iconTheme: const IconThemeData(color: Colors.white),
       elevation: AppSize.s0,
-      titleTextStyle: getMediumStyle(
+      titleTextStyle: getBoldStyle(
         fontSize: FontSize.s18,
         color: Colors.white, // It will be changed
         // color: ColorManager.white,
       ),
     ),
+
+    primarySwatch: ColorManager.mGreen,
 
     listTileTheme: const ListTileThemeData(
       iconColor: Colors.white,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/resources/routes.dart';
 import 'common_button.dart';
 
 class ViewHotelsButton extends StatelessWidget {
@@ -35,8 +36,8 @@ class ViewHotelsButton extends StatelessWidget {
                   child: Opacity(
                     opacity: opecity,
                     child: CommonButton(
-                      onTap: () {},
-                      buttonTextWidget: Padding(
+                      onTap: () => Navigator.pushNamed(context, Routes.searchPageKey),
+                      buttonTextWidget: const Padding(
                           padding: EdgeInsets.only(
                               left: 24, right: 24, top: 8, bottom: 8),
                           // EdgeInsets.only

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/resources/routes.dart';
 import '../cubit/login_cubit.dart';
 import '../../../../main.dart';
 import '../../../../core/resources/assets_manager.dart';
@@ -40,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
               (value) {
                 if (value) {
                   token = sl<SharedPreferences>().getString(isLoggedIn);
+                  Navigator.pushReplacementNamed(context, Routes.layoutPage);
                 }
               },
             );

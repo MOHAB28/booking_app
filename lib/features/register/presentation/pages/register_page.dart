@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/routes.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../../injection_container.dart';
 import '../../../../main.dart';
+import '../../../login/presentation/pages/login_page.dart';
 import '../../../login/presentation/widgets/custom_button_builder.dart';
 import '../../../login/presentation/widgets/custom_text_field.dart';
 import '../../../login/presentation/widgets/fast_auth_button.dart';
@@ -20,14 +22,14 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
-const String isRegistered = 'is regsiteres?';
 
 class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
-   RegisterCubit.get(context).init();
+    RegisterCubit.get(context).init();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +38,12 @@ class _RegisterPageState extends State<RegisterPage> {
         listener: (context, state) {
           if (state is RegisterSuccess) {
             sl<SharedPreferences>()
-                .setString(isRegistered, state.data.registerDataEntity.token)
+                .setString(isLoggedIn, state.data.registerDataEntity.token)
                 .then(
               (value) {
                 if (value) {
-                  token = sl<SharedPreferences>().getString(isRegistered);
+                  token = sl<SharedPreferences>().getString(isLoggedIn);
+                  Navigator.pushReplacementNamed(context, Routes.layoutPage);
                 }
               },
             );
@@ -139,7 +142,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             name: cubit.nameController.text.trim(),
                             email: cubit.emailController.text.trim(),
                             password: cubit.passwordController.text.trim(),
-                            passwordConfirm: cubit.passwordComfirmController.text.trim(),
+                            passwordConfirm:
+                                cubit.passwordComfirmController.text.trim(),
                           ),
                         );
                       }

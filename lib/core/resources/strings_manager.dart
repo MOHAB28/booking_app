@@ -28,5 +28,7 @@ class AppStrings {
   static const String enterName = 'Enter your name';
   static const String name = 'Name';
   static const String enterNamePls = 'Enter a valid name';
+  static const String explore = 'Explore';
+  static const String hotelName = 'Hotel name..';
 
 }
