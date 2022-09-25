@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'color_manager.dart';
 import 'font_manager.dart';
 import 'styles_manager.dart';
@@ -27,7 +26,14 @@ ThemeData getApplicationLighTheme() {
     ),
     primarySwatch: ColorManager.mGreen,
 
-    
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.black,
+        textStyle: getRegularStyle(color: Colors.black, fontSize: FontSize.s18),
+      ),
+    ),
+
+    cardColor: Colors.white,
 
     iconTheme: const IconThemeData(
       color: Colors.black,
@@ -139,6 +145,15 @@ ThemeData getApplicationDarkTheme() {
     ),
 
     primarySwatch: ColorManager.mGreen,
+
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.white,
+        textStyle: getRegularStyle(color: Colors.white, fontSize: FontSize.s18),
+      ),
+    ),
+
+    cardColor: ColorManager.bBlack,
 
     listTileTheme: const ListTileThemeData(
       iconColor: Colors.white,

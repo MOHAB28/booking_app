@@ -82,7 +82,7 @@ class AllHotelsDataModel extends AllHotelsDataEntity {
       lastPageUrl: json['last_page_url'],
       getHotelDataModel: hotels,
       linksDataModel: links,
-      nextPageUrl: json['next_page_url'],
+      nextPageUrl: json['next_page_url'] ?? '',
       path: json['path'],
       perPage: json['per_page'],
       to: json['to'],

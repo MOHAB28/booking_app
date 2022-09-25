@@ -9,4 +9,8 @@ abstract class SearchState extends Equatable {
 
 class SearchInitial extends SearchState {}
 
-class ChangeIsFilterStatus extends SearchState {}
+class SearchLoading extends SearchState {}
+
+class SearchFailure extends SearchState {}
+
+class SearchLoaded extends SearchState {}

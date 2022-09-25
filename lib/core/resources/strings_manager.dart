@@ -30,5 +30,13 @@ class AppStrings {
   static const String enterNamePls = 'Enter a valid name';
   static const String explore = 'Explore';
   static const String hotelName = 'Hotel name..';
+  static const String enterHotelName = 'Enter hotel name';
+  static const String loading = 'Loading...';
+  static const String filter = 'Filter';
+  static const String somethingWrong = 'Something wrong happend!';
+  static const String typing = 'Typing...';
+  static const String noImage = 'No Image';
+  static const String perNight = '/per neight';
+  static const String whereAreyouGoing = 'Where are you going...?';
 
 }
