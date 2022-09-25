@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phase3/core/resources/color_manager.dart';
 import 'package:phase3/core/resources/values_manager.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -10,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String)? onChanged;
   final TextInputType keyboardType;
   final TextEditingController? controller;
+  final bool showIcon;
 
   const CustomTextFormField({
     super.key,
@@ -22,6 +24,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     required this.keyboardType,
     this.controller,
+    this.showIcon = false,
   });
 
   @override
@@ -64,10 +67,18 @@ class CustomTextFormField extends StatelessWidget {
                   },
                   keyboardType: keyboardType,
                   decoration: InputDecoration(
-                    errorText: null,
-                    hintText: hintText,
-                    hintStyle: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.grey)
-                  ),
+                      errorText: null,
+                      hintText: hintText,
+                      prefixIcon: showIcon
+                          ? const Icon(
+                              Icons.search,
+                              color: ColorManager.bGreen,
+                            )
+                          : null,
+                      hintStyle: Theme.of(context)
+                          .textTheme
+                          .displaySmall!
+                          .copyWith(color: Colors.grey)),
                 ),
               ),
             ),

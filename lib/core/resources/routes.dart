@@ -4,7 +4,8 @@ import '../../features/login/presentation/pages/login_page.dart';
 import '../../features/login/presentation/pages/onboarding/view/onboarding_page.dart';
 import '../../features/login/presentation/pages/welcome_onboarding_page.dart';
 import '../../features/register/presentation/pages/register_page.dart';
-import '../../features/search/presentation/pages/search_page.dart';
+import '../../features/search/presentation/pages/edit_filter_page.dart';
+import '../../features/search/presentation/pages/main_page/search_page.dart';
 
 class Routes {
   static const String welcomeOnboardingPageKey = '/WelcomeOnboarding';
@@ -14,6 +15,7 @@ class Routes {
   static const String profileTestPage = '/profileTestPage';
   static const String layoutPage = '/layoutPage';
   static const String searchPageKey = '/SearchPage';
+  static const String editFilterPageKey = '/EditFilterPage';
 
   static Map<String, WidgetBuilder> get routes {
     return {
@@ -23,6 +25,7 @@ class Routes {
       loginPageKey: (context) => const LoginPage(),
       registerPageKey: (context) => const RegisterPage(),
       searchPageKey: (context) => const SearchPage(),
+      editFilterPageKey: (context) => const EditFilterPage(),
     };
   }
 }
