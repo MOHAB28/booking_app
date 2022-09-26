@@ -1,5 +1,7 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/resources/routes.dart';
 import '../../../../../../core/resources/strings_manager.dart';
 import '../../../../../../core/resources/values_manager.dart';
 import '../../../cubit/search_cubit.dart';
@@ -30,7 +32,17 @@ class _FilterPageState extends State<FilterPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if(widget.title.text.isEmpty) {
+                        FlushbarHelper.createError(message: AppStrings.enterHotelName).show(context);
+                      } else {
+                        Navigator.pushNamed(
+                        context,
+                        Routes.editFilterPageKey,
+                        arguments: widget.title.text,
+                      );
+                      }
+                    },
                     child: Row(
                       children: const [
                         Text(AppStrings.filter),
@@ -80,7 +92,7 @@ class _FilterPageState extends State<FilterPage> {
                 ]
               ] else ...[
                 const Center(
-                  child: Text(AppStrings.somethingWrong),
+                  child: Text(AppStrings.enterHotelName),
                 ),
               ]
             ],
