@@ -38,5 +38,10 @@ class AppStrings {
   static const String noImage = 'No Image';
   static const String perNight = '/per neight';
   static const String whereAreyouGoing = 'Where are you going...?';
+  static const String priceForoneNight = 'price (for 1 night)';
+  static const String address = 'Address';
+  static const String apply = 'Apply';
+  static const String enterUrAddress = 'enter your address';
+  static const String distanceFromCity = 'Distance from city center';
 
 }

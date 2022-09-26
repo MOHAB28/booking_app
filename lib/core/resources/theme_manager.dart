@@ -25,7 +25,10 @@ ThemeData getApplicationLighTheme() {
       ),
     ),
     primarySwatch: ColorManager.mGreen,
-
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: Colors.white,
+      elevation: AppSize.s3,
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: Colors.black,
@@ -145,6 +148,11 @@ ThemeData getApplicationDarkTheme() {
     ),
 
     primarySwatch: ColorManager.mGreen,
+
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: ColorManager.bBlack,
+      elevation: AppSize.s3,
+    ),
 
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
