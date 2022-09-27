@@ -13,20 +13,19 @@ import '../widgets/photo_and_profile.dart';
 
 class ProfileTestPage extends StatelessWidget {
   ProfileTestPage({super.key});
-  final String testToken =
-      "DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u";
+  
+  
 
   final ProfileCubitData data = ProfileCubitData(
     name: 'mohamed',
     email: 'mohamed@gmail.com',
     image: 'mohamed.png',
-    token: "DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u",
   );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: BlocProvider.of<ProfileCubit>(context).getProfile(testToken),
+        future: BlocProvider.of<ProfileCubit>(context).getProfile(),
         builder: (context, snapshot) => BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             if (state is ProfileLoadingState) {
@@ -36,7 +35,6 @@ class ProfileTestPage extends StatelessWidget {
                 name: state.profile.data.name,
                 email: state.profile.data.email,
                 image: state.profile.data.image,
-                token: testToken,
               );
               return Padding(
                 padding: const EdgeInsets.symmetric(

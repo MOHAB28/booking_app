@@ -4,13 +4,12 @@ import '../../../../core/usecase/usecase.dart';
 import '../entities/profile_entity.dart';
 import '../repositories/profile_repository.dart';
 
-class GetProfileUseCase extends BaseUseCase<String, ProfileEntity> {
+class GetProfileUseCase extends BaseUseCase<NoParams, ProfileEntity> {
   final ProfileRepository _repository;
   GetProfileUseCase(this._repository);
 
   @override
-  Future<Either<PrimaryServerException, ProfileEntity>> call(
-      String input) async {
-    return await _repository.getProfile(input);
+  Future<Either<PrimaryServerException, ProfileEntity>> call(NoParams input) async {
+    return await _repository.getProfile();
   }
 }

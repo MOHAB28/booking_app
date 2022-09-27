@@ -24,7 +24,6 @@ class UpdateProfilePage extends StatelessWidget {
       name: userProfile.name,
       email: userProfile.email,
       image: userProfile.image,
-      token: userProfile.token,
     );
 
     void saveForm() {
@@ -73,7 +72,6 @@ class UpdateProfilePage extends StatelessWidget {
                         name: newValue!,
                         email: userUpdatedProfile.email,
                         image: userUpdatedProfile.image,
-                        token: userUpdatedProfile.token,
                       );
                     },
                   ),
@@ -87,7 +85,6 @@ class UpdateProfilePage extends StatelessWidget {
                         name: userUpdatedProfile.name,
                         email: newValue,
                         image: userUpdatedProfile.image,
-                        token: userUpdatedProfile.token,
                       );
                     },
                   ),

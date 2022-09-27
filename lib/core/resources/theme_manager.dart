@@ -205,6 +205,10 @@ ThemeData getApplicationDarkTheme() {
         color: ColorManager.gGrey,
         fontSize: FontSize.s14,
       ),
+      bodyMedium: getRegularStyle(
+        color: ColorManager.bGreen,
+        fontSize: FontSize.s18,
+      ),
       bodySmall: getRegularStyle(
         color: ColorManager.gGrey,
         fontSize: FontSize.s16,

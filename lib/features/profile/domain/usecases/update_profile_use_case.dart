@@ -13,22 +13,23 @@ class UpdateProfileUseCase
 
   @override
   Future<Either<PrimaryServerException, ProfileEntity>> call(input) async {
-    return await _repository.updateProfile(ProfileData(
-      name: input.name,
-      email: input.email,
-      image: input.image,
-      token: input.token,
-    ));
+    return await _repository.updateProfile(
+      ProfileData(
+        name: input.name,
+        email: input.email,
+        image: input.image,
+      ),
+    );
   }
 }
 
 class ProfileUseCaseData {
-  final String name, email, image, token;
+  final String name, email;
+  final String? image;
 
   ProfileUseCaseData({
     required this.name,
     required this.email,
-    required this.image,
-    required this.token,
+    this.image,
   });
 }

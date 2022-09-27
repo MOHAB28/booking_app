@@ -88,7 +88,9 @@ class _SearchPageState extends State<SearchPage> {
                 title: _searchController,
               ),
             ] else ...[
-              const MapPage()
+               MapPage(
+                title: _searchController,
+              )
             ]
           ],
         ),

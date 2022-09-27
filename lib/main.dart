@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phase3/core/theme/theme_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'core/theme/theme_manager.dart';
 import 'features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'features/profile/presentation/cubit/theme/theme_cubit.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'features/login/presentation/pages/login_page.dart';
 import 'features/booking/presentation/cubit/booking_cubit.dart';
 import 'features/register/presentation/cubit/register_cubit.dart';
@@ -35,9 +35,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<GetHotelsCubit>()),
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<RegisterCubit>()),
-        BlocProvider(create: (context) => sl<ProfileCubit>()),
         BlocProvider(create: (context) => sl<BookingCubit>()),
         BlocProvider(create: (context) => sl<SearchCubit>()),
+        BlocProvider(create: (context) => sl<ProfileCubit>()),
         BlocProvider(create: (context) => sl<ThemeCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
@@ -45,7 +45,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Booking app Team 15',
-            themeMode: ThemeManager().call(),
+            themeMode: ThemeMode.dark,
+            // themeMode: ThemeManager().call(),
             theme: getApplicationLighTheme(),
             darkTheme: getApplicationDarkTheme(),
             routes: Routes.routes,
@@ -94,7 +95,8 @@ class _HomePageState extends State<HomePage> {
         listener: (context, state) {
           if (state is RegisterSuccess) {
             debugPrint(
-                '${state.data.status} ${state.data.registerDataEntity.name}');
+              '${state.data.status} ${state.data.registerDataEntity.name}',
+            );
           }
         },
       ),
