@@ -11,8 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   flutter_bloc: ^8.1.1
@@ -20,23 +18,19 @@ dependencies:
   dartz: ^0.10.1
   internet_connection_checker: ^0.0.1+4
   equatable: ^2.0.5
-
   smooth_page_indicator: ^1.0.0+2
   font_awesome_flutter: ^10.2.1
   google_maps_flutter: ^2.1.6
   flutter_rating_bar: ^4.0.1
-
   shared_preferences: ^2.0.15
   another_flushbar: ^1.12.29
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.0
-
 flutter:
-
   uses-material-design: true
 
 

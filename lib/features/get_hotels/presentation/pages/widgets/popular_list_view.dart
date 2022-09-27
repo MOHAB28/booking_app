@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'bottom_top_move_animation.dart';
 import 'category_view.dart';
 import 'static_hotel_data/hotel_list_static_data.dart';
