@@ -75,6 +75,7 @@ class _FilterPageState extends State<FilterPage> {
                   if (hotelsEntity != null) ...[
                     ListView.separated(
                       shrinkWrap: true,
+                      
                       itemCount:
                           hotelsEntity.getAllHotelsData.getHotelData.length,
                       physics: const NeverScrollableScrollPhysics(),

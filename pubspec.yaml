@@ -26,7 +26,9 @@ dependencies:
   another_flushbar: ^1.12.29
   flutter_phoenix: ^1.1.0
   easy_localization: ^3.0.1
+  geolocator: ^9.0.2
   image_picker: ^0.8.5+3
+
 
 dev_dependencies:
   flutter_test:

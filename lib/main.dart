@@ -45,7 +45,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Booking app Team 15',
-            themeMode: ThemeManager().call(),
+            themeMode: ThemeMode.dark,
+            // themeMode: ThemeManager().call(),
             theme: getApplicationLighTheme(),
             darkTheme: getApplicationDarkTheme(),
             routes: Routes.routes,
