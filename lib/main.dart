@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phase3/core/theme/theme_manager.dart';
+import 'features/profile/presentation/cubit/profile/profile_cubit.dart';
+import 'features/profile/presentation/cubit/theme/theme_cubit.dart';
 import 'features/register/presentation/cubit/register_cubit.dart';
 import 'core/resources/routes.dart';
 import 'core/resources/theme_manager.dart';
 import 'features/get_hotels/presentation/cubit/get_hotels_cubit.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
-import 'features/profile/presentation/cubit/profile_cubit.dart';
 import 'features/register/presentation/cubit/register_state.dart';
 import 'injection_container.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await init();
   runApp(const MyApp());
 }
@@ -26,15 +29,20 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<RegisterCubit>()),
         BlocProvider(create: (context) => sl<ProfileCubit>()),
+        BlocProvider(create: (context) => sl<ThemeCubit>()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo m.Maher',
-        themeMode: ThemeMode.light,
-        theme: getApplicationLighTheme(),
-        darkTheme: getApplicationDarkTheme(),
-        routes: Routes.routes,
-        initialRoute: Routes.profileTestPage,
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Booking app Team 15',
+            themeMode: ThemeManager().call(),
+            theme: getApplicationLighTheme(),
+            darkTheme: getApplicationDarkTheme(),
+            routes: Routes.routes,
+            initialRoute: Routes.profileTestPage,
+          );
+        },
       ),
     );
   }

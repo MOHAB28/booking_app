@@ -1,10 +1,8 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../domain/usecases/update_profile_use_case.dart';
-import '../../domain/usecases/get_profile_use_case.dart';
-
-import '../../domain/entities/profile_entity.dart';
+import '../../../domain/entities/profile_entity.dart';
+import '../../../domain/usecases/get_profile_use_case.dart';
+import '../../../domain/usecases/update_profile_use_case.dart';
 
 part 'profile_state.dart';
 

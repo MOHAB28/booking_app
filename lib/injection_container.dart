@@ -1,10 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:phase3/features/profile/presentation/cubit/theme/theme_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'features/profile/domain/usecases/update_profile_use_case.dart';
 import 'features/profile/data/datasources/get_profile_remote_data_source.dart';
 import 'features/profile/data/repositories/profile_repository_implementaion.dart';
 import 'features/profile/domain/repositories/profile_repository.dart';
-import 'features/profile/presentation/cubit/profile_cubit.dart';
+import 'features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'core/network/network_info.dart';
 import 'features/get_hotels/data/datasources/get_hotels_remote.dart';
 import 'features/get_hotels/data/repositories/get_hotels_repo_impl.dart';
@@ -44,6 +46,7 @@ Future<void> init() async {
     () => ProfileCubit(sl(), sl()),
   );
 
+  sl.registerFactory(() => ThemeCubit());
   // Use cases
 
   sl.registerLazySingleton(() => LoginUsecase(sl()));
@@ -51,6 +54,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => RegisterUsecase(sl()));
   sl.registerLazySingleton(() => GetProfileUseCase(sl()));
   sl.registerLazySingleton(() => UpdateProfileUseCase(sl()));
+
   // Repository
 
   sl.registerLazySingleton<LoginRepo>(
@@ -87,5 +91,8 @@ Future<void> init() async {
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
   //! External
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
+  sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }
