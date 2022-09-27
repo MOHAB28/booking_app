@@ -33,14 +33,16 @@ class _FilterPageState extends State<FilterPage> {
                 children: [
                   TextButton(
                     onPressed: () {
-                      if(widget.title.text.isEmpty) {
-                        FlushbarHelper.createError(message: AppStrings.enterHotelName).show(context);
+                      if (widget.title.text.isEmpty) {
+                        FlushbarHelper.createError(
+                                message: AppStrings.enterHotelName)
+                            .show(context);
                       } else {
                         Navigator.pushNamed(
-                        context,
-                        Routes.editFilterPageKey,
-                        arguments: widget.title.text,
-                      );
+                          context,
+                          Routes.editFilterPageKey,
+                          arguments: widget.title.text,
+                        );
                       }
                     },
                     child: Row(
@@ -55,13 +57,19 @@ class _FilterPageState extends State<FilterPage> {
               ),
               const SizedBox(height: AppSize.s10),
               if (widget.title.text.isEmpty) ...[
-                const Center(
-                  child: Text(AppStrings.enterHotelName),
+                Center(
+                  child: Text(
+                    AppStrings.enterHotelName,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
               ] else if (widget.title.text.isNotEmpty) ...[
                 if (state is SearchLoading) ...[
-                  const Center(
-                    child: Text(AppStrings.loading),
+                  Center(
+                    child: Text(
+                      AppStrings.loading,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ] else if (state is SearchLoaded) ...[
                   if (hotelsEntity != null) ...[
@@ -86,13 +94,19 @@ class _FilterPageState extends State<FilterPage> {
                     ),
                   ]
                 ] else if (state is SearchFailure) ...[
-                  const Center(
-                    child: Text(AppStrings.somethingWrong),
+                  Center(
+                    child: Text(
+                      AppStrings.somethingWrong,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                   ),
                 ]
               ] else ...[
-                const Center(
-                  child: Text(AppStrings.enterHotelName),
+                Center(
+                  child: Text(
+                    AppStrings.enterHotelName,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
               ]
             ],
