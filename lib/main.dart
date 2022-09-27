@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<GetHotelsCubit>()),
         BlocProvider(create: (context) => sl<LoginCubit>()),
         BlocProvider(create: (context) => sl<RegisterCubit>()),
-        BlocProvider(create: (context) => sl<ProfileCubit>()),
         BlocProvider(create: (context) => sl<BookingCubit>()),
         BlocProvider(create: (context) => sl<SearchCubit>()),
+        BlocProvider(create: (context) => sl<ProfileCubit>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
