@@ -43,5 +43,9 @@ class AppStrings {
   static const String apply = 'Apply';
   static const String enterUrAddress = 'enter your address';
   static const String distanceFromCity = 'Distance from city center';
+  static const String summary = 'Summary';
+  static const String overallRating = 'Overall rating';
+  static const String photos = 'Photos';
+  static const String bookNow = 'Book now';
 
 }

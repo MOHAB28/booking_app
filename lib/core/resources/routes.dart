@@ -19,7 +19,7 @@ class Routes {
 
   static Map<String, WidgetBuilder> get routes {
     return {
-      layoutPage: (context) => HomeLayout(),
+      layoutPage: (context) => const HomeLayout(),
       welcomeOnboardingPageKey: (context) => const WelcomeOnboardingPage(),
       onboardingPageKey: (context) => const OnboardingPage(),
       loginPageKey: (context) => const LoginPage(),

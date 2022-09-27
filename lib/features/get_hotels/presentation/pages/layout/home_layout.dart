@@ -5,7 +5,7 @@ import '../screens/explore_screen.dart';
 import '../screens/profile_screen.dart';
 
 class HomeLayout extends StatefulWidget {
-  HomeLayout({
+  const HomeLayout({
     Key? key,
   }) : super(key: key);
 
