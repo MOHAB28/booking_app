@@ -1,8 +1,7 @@
 import '../../../../core/network/dio_helper.dart';
+import '../../../../core/network/end_points.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../models/profile_model.dart';
-
-import '../../../../core/network/end_points.dart';
 
 abstract class GetProfileRemoteDataSource {
   Future<ProfileModel> getProfile(String token);

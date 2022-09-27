@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:phase3/core/resources/strings_manager.dart';
-import 'package:phase3/core/resources/values_manager.dart';
-import 'package:phase3/features/login/presentation/widgets/custom_text_field.dart';
+import '../../../../../core/resources/strings_manager.dart';
+import '../../../../../core/resources/values_manager.dart';
+import '../../../../login/presentation/widgets/custom_text_field.dart';
 import '../../../domain/entities/get_hotels_entities.dart';
 import '../../cubit/get_hotels_cubit.dart';
 import '../widgets/bottom_top_move_animation.dart';
@@ -26,7 +26,6 @@ class ExploreScreen extends StatefulWidget {
 
 class _ExploreScreenState extends State<ExploreScreen>
     with TickerProviderStateMixin {
-  final TextEditingController _controller = TextEditingController();
   late ScrollController controller;
   late AnimationController animationController;
   var sliderImageHeight = 0.0;
@@ -151,14 +150,12 @@ class _ExploreScreenState extends State<ExploreScreen>
                   top: MediaQuery.of(context).padding.top,
                   left: 0,
                   right: 0,
-                  child: CustomTextFormField(
+                  child: const CustomTextFormField(
                     keyboardType: TextInputType.none,
-                    padding:
-                        const EdgeInsets.all( AppPadding.p20),
                     errorText: '',
+                    padding: EdgeInsets.all(AppPadding.p20),
                     showIcon: true,
                     hintText: AppStrings.whereAreyouGoing,
-                    controller: _controller,
                   ),
                 ),
               ],
@@ -171,12 +168,6 @@ class _ExploreScreenState extends State<ExploreScreen>
         }
       },
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 
   Widget getDealListView(List<HotelDataEntity> hotelData, int index) {

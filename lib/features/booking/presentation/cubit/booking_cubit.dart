@@ -19,8 +19,8 @@ class BookingCubit extends Cubit<BookingState> {
     required this.updateBookingUsecase,
   }) : super(BookingInitial());
 
-  static BookingCubit get(BuildContext context) => BlocProvider.of(context);
-
+  static BookingCubit get(BuildContext context) =>
+      BlocProvider.of(context);
 
   CreateBookingEntity? createBookingEntity;
   Future<void> createBooking(int hotelId) async {
@@ -30,7 +30,7 @@ class BookingCubit extends Cubit<BookingState> {
       (failure) => emit(CreateBookingFailure()),
       (data) {
         createBookingEntity = data;
-        emit(CreateBookingLoaded());
+        emit(CreateBookingLoaded(data));
       },
     );
   }
@@ -55,8 +55,6 @@ class BookingCubit extends Cubit<BookingState> {
       },
     );
   }
-
-
 
   GetBookingsEntity? getBookingsEntity;
   Future<void> getAllBookins({

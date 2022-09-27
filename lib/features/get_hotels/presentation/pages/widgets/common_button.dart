@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phase3/features/get_hotels/presentation/pages/widgets/tap_effect.dart';
+import 'tap_effect.dart';
 
 
 class CommonButton extends StatelessWidget {
@@ -15,7 +15,7 @@ class CommonButton extends StatelessWidget {
     this.onTap,
     this.buttonText,
     this.buttonTextWidget,
-    this.textColor: Colors.white,
+    this.textColor = Colors.white,
     this.backgroundColor,
     this.padding,
     this.isClickable = true,

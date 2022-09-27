@@ -25,7 +25,10 @@ ThemeData getApplicationLighTheme() {
       ),
     ),
     primarySwatch: ColorManager.mGreen,
-
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: Colors.white,
+      elevation: AppSize.s3,
+    ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: Colors.black,
@@ -68,6 +71,10 @@ ThemeData getApplicationLighTheme() {
         fontSize: FontSize.s18,
         color: Colors.black,
       ),
+      titleSmall: getBoldStyle(
+        color: Colors.black,
+        fontSize: FontSize.s16,
+      ),
       displayMedium: getRegularStyle(
         color: Colors.black,
         fontSize: FontSize.s18,
@@ -75,6 +82,10 @@ ThemeData getApplicationLighTheme() {
       displaySmall: getRegularStyle(
         color: ColorManager.gGrey,
         fontSize: FontSize.s14,
+      ),
+      bodyMedium: getRegularStyle(
+        color: ColorManager.bGreen,
+        fontSize: FontSize.s18,
       ),
       bodySmall: getRegularStyle(
         color: ColorManager.gGrey,
@@ -146,6 +157,11 @@ ThemeData getApplicationDarkTheme() {
 
     primarySwatch: ColorManager.mGreen,
 
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: ColorManager.bBlack,
+      elevation: AppSize.s3,
+    ),
+
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: Colors.white,
@@ -176,6 +192,10 @@ ThemeData getApplicationDarkTheme() {
       titleMedium: getBoldStyle(
         fontSize: FontSize.s18,
         color: Colors.white,
+      ),
+      titleSmall: getBoldStyle(
+        color: Colors.white,
+        fontSize: FontSize.s16,
       ),
       displayMedium: getRegularStyle(
         color: Colors.white,

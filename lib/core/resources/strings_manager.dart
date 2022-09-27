@@ -6,6 +6,15 @@ class AppStrings {
   static const String login = 'Login';
   static const String creatAccount = 'Create account';
   static const String alreadyHeave = 'Already Have an account?';
+  static const String planeYourTips = 'Plane your tips';
+  static const String viewProfile = 'View and Edit profile';
+  static const String editProfile = 'Edit profile';
+  static const String darkMode = 'Dark mode';
+  static const String changeLanguage = 'Change language';
+  static const String contactUs = 'Contact us';
+  static const String userName = 'Name';
+  static const String email = 'Email';
+  static const String validatorMessage = 'This field can\'t be empty';
   static const String onboardingTitle1 = 'Plane your tips';
   static const String onboardingTitle2 = 'Find best deals';
   static const String onboardingTitle3 = 'Best travelling all time';
@@ -38,5 +47,14 @@ class AppStrings {
   static const String noImage = 'No Image';
   static const String perNight = '/per neight';
   static const String whereAreyouGoing = 'Where are you going...?';
+  static const String priceForoneNight = 'price (for 1 night)';
+  static const String address = 'Address';
+  static const String apply = 'Apply';
+  static const String enterUrAddress = 'enter your address';
+  static const String distanceFromCity = 'Distance from city center';
+  static const String summary = 'Summary';
+  static const String overallRating = 'Overall rating';
+  static const String photos = 'Photos';
+  static const String bookNow = 'Book now';
 
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:phase3/features/get_hotels/presentation/pages/widgets/page_pop_view.dart';
+import 'page_pop_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeExplorerSliderView extends StatefulWidget {
@@ -9,7 +9,8 @@ class HomeExplorerSliderView extends StatefulWidget {
 
   final VoidCallback click;
 
-  HomeExplorerSliderView({Key? key, required this.opValue, required this.click})
+  const HomeExplorerSliderView(
+      {Key? key, required this.opValue, required this.click})
       : super(key: key);
 
   @override
@@ -26,17 +27,22 @@ class _HomeExplorerSliderView extends State<HomeExplorerSliderView> {
   @override
   void initState() {
     sliderTimer = Timer.periodic(const Duration(seconds: 4), (timer) {
-      if (mounted) if (currentShowIndex == 0) {
-        pageController.animateTo(MediaQuery.of(context).size.width,
-            duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-      } else {
-        if (currentShowIndex == 1) {
-        pageController.animateTo(MediaQuery.of(context).size.width * 2,
-            duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-      } else if (currentShowIndex == 2) {
-        pageController.animateTo(0,
-            duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
-      }
+      if (mounted) {
+        if (currentShowIndex == 0) {
+          pageController.animateTo(MediaQuery.of(context).size.width,
+              duration: const Duration(seconds: 1),
+              curve: Curves.fastOutSlowIn);
+        } else {
+          if (currentShowIndex == 1) {
+            pageController.animateTo(MediaQuery.of(context).size.width * 2,
+                duration: const Duration(seconds: 1),
+                curve: Curves.fastOutSlowIn);
+          } else if (currentShowIndex == 2) {
+            pageController.animateTo(0,
+                duration: const Duration(seconds: 1),
+                curve: Curves.fastOutSlowIn);
+          }
+        }
       }
     });
 
@@ -74,22 +80,17 @@ class _HomeExplorerSliderView extends State<HomeExplorerSliderView> {
               bottom: 32,
               right: 10,
               left: 280,
-              child:SmoothPageIndicator(
+              child: SmoothPageIndicator(
                 controller: pageController,
                 count: 3,
-                effect : WormEffect (
-                  activeDotColor :Colors.teal ,
-                  dotColor : Colors.white ,
-                  dotHeight :11.0 ,
-                  dotWidth : 11.0 ,
-                  spacing : 5.0 ,
-                ) , // WormEffect
-              )
-
-
-
-          )
-
+                effect: const WormEffect(
+                  activeDotColor: Colors.teal,
+                  dotColor: Colors.white,
+                  dotHeight: 11.0,
+                  dotWidth: 11.0,
+                  spacing: 5.0,
+                ), // WormEffect
+              ))
         ],
       ),
     );

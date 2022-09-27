@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phase3/features/get_hotels/presentation/cubit/get_hotels_cubit.dart';
+import '../../cubit/get_hotels_cubit.dart';
 import '../screens/explore_screen.dart';
 import '../screens/profile_screen.dart';
 
 class HomeLayout extends StatefulWidget {
-  HomeLayout({
+  const HomeLayout({
     Key? key,
   }) : super(key: key);
 

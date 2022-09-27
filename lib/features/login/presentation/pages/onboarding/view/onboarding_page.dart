@@ -1,5 +1,7 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
+
 import '../../../../../../core/resources/color_manager.dart';
 import '../../../../../../core/resources/routes.dart';
 import '../../../../../../core/resources/strings_manager.dart';

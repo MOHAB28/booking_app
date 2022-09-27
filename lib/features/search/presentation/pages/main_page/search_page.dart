@@ -1,7 +1,6 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phase3/features/login/presentation/widgets/custom_text_field.dart';
+import '../../../../login/presentation/widgets/custom_text_field.dart';
 import '../../../../../core/resources/values_manager.dart';
 import '../../../../../core/resources/strings_manager.dart';
 import '../../cubit/search_cubit.dart';

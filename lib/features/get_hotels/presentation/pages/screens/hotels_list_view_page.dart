@@ -12,17 +12,14 @@ class HotelListViewPage extends StatelessWidget {
   final AnimationController animationController;
   final Animation<double> animation;
 
-  const HotelListViewPage(
-      {Key? key,
-        required this.hotelData,
-        required this.animationController,
-        required this.animation,
-        required this.callback,
-        this.isShowDate: false,
-
-
-      })
-      : super(key: key);
+  const HotelListViewPage({
+    Key? key,
+    required this.hotelData,
+    required this.animationController,
+    required this.animation,
+    required this.callback,
+    this.isShowDate = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +31,7 @@ class HotelListViewPage extends StatelessWidget {
         child: CommonCard(
           color: Colors.white,
           child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(15)),
+            borderRadius: const BorderRadius.all(Radius.circular(15)),
             child: AspectRatio(
               aspectRatio: 2.7,
               child: Stack(
@@ -42,13 +39,16 @@ class HotelListViewPage extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       AspectRatio(
-                        aspectRatio: 0.86,
-                        child:hotelData.hotelImages.isNotEmpty ?
-                        Image.network(
-                          'http://api.mahmoudtaha.com/images/${hotelData.hotelImages[0].image}',
-                          fit: BoxFit.cover,
-                        ): Image.asset('assets/images/hotel_2.png' , fit: BoxFit.cover,)
-                      ),
+                          aspectRatio: 0.86,
+                          child: hotelData.hotelImages.isNotEmpty
+                              ? Image.network(
+                                  'http://api.mahmoudtaha.com/images/${hotelData.hotelImages[0].image}',
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(
+                                  'assets/images/hotel_2.png',
+                                  fit: BoxFit.cover,
+                                )),
                       Expanded(
                         child: Container(
                           padding: EdgeInsets.all(
@@ -63,8 +63,7 @@ class HotelListViewPage extends StatelessWidget {
                                 hotelData.name,
                                 maxLines: 2,
                                 textAlign: TextAlign.left,
-                                style:
-                                const TextStyle(
+                                style: const TextStyle(
                                   fontSize: 16,
                                 ),
                                 overflow: TextOverflow.ellipsis,
@@ -82,13 +81,13 @@ class HotelListViewPage extends StatelessWidget {
                                     Expanded(
                                       child: Column(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.end,
+                                            MainAxisAlignment.end,
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: <Widget>[
                                           Row(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                                CrossAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(
                                                 FontAwesomeIcons.mapMarkerAlt,
@@ -97,7 +96,7 @@ class HotelListViewPage extends StatelessWidget {
                                                     .primaryColor,
                                               ),
                                               Text(
-                                                hotelData.address ,
+                                                hotelData.address,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: const TextStyle(
                                                   fontSize: 14,
@@ -105,40 +104,44 @@ class HotelListViewPage extends StatelessWidget {
                                               ),
                                             ],
                                           ),
-                                RatingBarIndicator(
-                                  rating:double.tryParse(hotelData.rate)!.toDouble() ,
-                                  itemBuilder: (context, index) => const Icon(
-                                    Icons.star,
-                                    color:Colors.teal,
-                                  ),
-                                  itemCount: 5,
-                                  unratedColor: Colors.grey,
-                                  itemSize: 18.0,
-                                  direction: Axis.horizontal,
-                                ),
+                                          RatingBarIndicator(
+                                            rating:
+                                                double.tryParse(hotelData.rate)!
+                                                    .toDouble(),
+                                            itemBuilder: (context, index) =>
+                                                const Icon(
+                                              Icons.star,
+                                              color: Colors.teal,
+                                            ),
+                                            itemCount: 5,
+                                            unratedColor: Colors.grey,
+                                            itemSize: 18.0,
+                                            direction: Axis.horizontal,
+                                          ),
                                         ],
                                       ),
                                     ),
                                     FittedBox(
                                       child: Padding(
                                         padding:
-                                        const EdgeInsets.only(right: 8),
+                                            const EdgeInsets.only(right: 8),
                                         child: Column(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                              CrossAxisAlignment.end,
                                           children: <Widget>[
                                             Text(
                                               "\$${hotelData.price}",
                                               textAlign: TextAlign.left,
-                                              style: const TextStyle(fontSize: 22),
+                                              style:
+                                                  const TextStyle(fontSize: 22),
                                             ),
                                             const Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: 2.0),
+                                              padding:
+                                                  EdgeInsets.only(top: 2.0),
                                               child: Text(
-                                               ("Per Night"),
+                                                ("Per Night"),
                                                 style: TextStyle(
                                                   fontSize: 14,
                                                 ),
@@ -162,11 +165,9 @@ class HotelListViewPage extends StatelessWidget {
                     child: InkWell(
                       highlightColor: Colors.transparent,
                       splashColor:
-                      Theme.of(context).primaryColor.withOpacity(0.1),
+                          Theme.of(context).primaryColor.withOpacity(0.1),
                       onTap: () {
-                        try {
-                          callback();
-                        } catch (e) {}
+                        callback();
                       },
                     ),
                   )
