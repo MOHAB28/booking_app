@@ -1,7 +1,13 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:phase3/features/profile/presentation/cubit/theme/theme_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'features/booking/data/datasources/booking_remote_data_sources.dart';
+import 'features/booking/data/repositories/booking_repo_impl.dart';
+import 'features/booking/domain/repositories/booking_repo.dart';
+import 'features/booking/domain/usecases/create_booking_usecase.dart';
+import 'features/booking/domain/usecases/get_bookings_usecase.dart';
+import 'features/booking/domain/usecases/update_booking_usecase.dart';
+import 'features/booking/presentation/cubit/booking_cubit.dart';
 import 'features/profile/domain/usecases/update_profile_use_case.dart';
 import 'features/profile/data/datasources/get_profile_remote_data_source.dart';
 import 'features/profile/data/repositories/profile_repository_implementaion.dart';
@@ -20,11 +26,17 @@ import 'core/network/dio_helper.dart';
 import 'features/login/data/repositories/login_repo_impl.dart';
 import 'features/login/domain/repositories/login_repo.dart';
 import 'features/profile/domain/usecases/get_profile_use_case.dart';
+import 'features/profile/presentation/cubit/theme/theme_cubit.dart';
 import 'features/register/data/datasources/register_remote_data_source.dart';
 import 'features/register/data/repositories/register_repo_impl.dart';
 import 'features/register/domain/repositories/register_repo.dart';
 import 'features/register/domain/usecases/register_usecase.dart';
 import 'features/register/presentation/cubit/register_cubit.dart';
+import 'features/search/data/datasources/search_remote_data_souces.dart';
+import 'features/search/data/repositories/search_repo_impl.dart';
+import 'features/search/domain/repositories/search_repo.dart';
+import 'features/search/domain/usecases/search_usecase.dart';
+import 'features/search/presentation/cubit/search_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -43,10 +55,22 @@ Future<void> init() async {
   );
 
   sl.registerFactory(
+    () => SearchCubit(sl()),
+  );
+
+  sl.registerFactory(
     () => ProfileCubit(sl(), sl()),
   );
 
   sl.registerFactory(() => ThemeCubit());
+  sl.registerFactory(
+    () => BookingCubit(
+      createBookingUsecase: sl(),
+      getBookingUsecase: sl(),
+      updateBookingUsecase: sl(),
+    ),
+  );
+
   // Use cases
 
   sl.registerLazySingleton(() => LoginUsecase(sl()));
@@ -55,10 +79,17 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetProfileUseCase(sl()));
   sl.registerLazySingleton(() => UpdateProfileUseCase(sl()));
 
+  sl.registerLazySingleton(() => CreateBookingUsecase(sl()));
+  sl.registerLazySingleton(() => UpdateBookingUsecase(sl()));
+  sl.registerLazySingleton(() => GetBookingUsecase(sl()));
+  sl.registerLazySingleton(() => SearchUsecase(sl()));
   // Repository
 
   sl.registerLazySingleton<LoginRepo>(
     () => LoginRepoImpl(sl(), sl()),
+  );
+  sl.registerLazySingleton<SearchRepo>(
+    () => SearchRepoImpl(sl(), sl()),
   );
   sl.registerLazySingleton<RegisterRepo>(
     () => RegisterRepoImpl(sl(), sl()),
@@ -69,16 +100,25 @@ Future<void> init() async {
 
   sl.registerLazySingleton<ProfileRepository>(
       () => ProfileRepositoryImplementation(sl(), sl()));
+
+  sl.registerLazySingleton<BookingRepo>(() => BookingRepoImpl(sl(), sl()));
   // Data sources
 
   sl.registerLazySingleton<LoginRemoteDataSources>(
     () => LoginRemoteDataSourcesImpl(sl()),
+  );
+  sl.registerLazySingleton<SearchRemoteDataSources>(
+    () => SearchRemoteDataSourcesImpl(sl()),
   );
   sl.registerLazySingleton<RegisterRemoteDataSources>(
     () => RegisterRemoteDataSourcesImpl(sl()),
   );
   sl.registerLazySingleton<GetHotelsRemoteDataSources>(
     () => GetHotelsRemoteDataSourcesImpl(sl()),
+  );
+
+  sl.registerLazySingleton<BookingRemoteDataSources>(
+    () => BookingRemoteDataSourcesImpl(sl()),
   );
 
   sl.registerLazySingleton<GetProfileRemoteDataSource>(
@@ -91,8 +131,8 @@ Future<void> init() async {
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
   //! External
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
-  sl.registerLazySingleton(() => sharedPreferences);
+
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }

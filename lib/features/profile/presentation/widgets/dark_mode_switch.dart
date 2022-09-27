@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phase3/features/profile/presentation/cubit/theme/theme_cubit.dart';
+import '../cubit/theme/theme_cubit.dart';
 
 class DarkModeSwitch extends StatelessWidget {
   const DarkModeSwitch({

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phase3/core/resources/color_manager.dart';
-import 'package:phase3/core/resources/routes.dart';
-import 'package:phase3/core/resources/strings_manager.dart';
-import 'package:phase3/core/resources/values_manager.dart';
-import 'package:phase3/core/utils/snack_bar.dart';
-import 'package:phase3/features/profile/presentation/cubit/profile/profile_cubit.dart';
-import 'package:phase3/features/profile/presentation/pages/txt_field.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/routes.dart';
+import '../../../../core/resources/strings_manager.dart';
+import '../../../../core/resources/values_manager.dart';
+import '../../../../core/utils/snack_bar.dart';
+import '../cubit/profile/profile_cubit.dart';
+import 'txt_field.dart';
 
 import '../widgets/edit_profile_widgets/edit_profile_txt.dart';
 import '../widgets/edit_profile_widgets/user_photo.dart';

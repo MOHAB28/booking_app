@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:phase3/core/resources/strings_manager.dart';
-import 'package:phase3/core/utils/loading_indicator.dart';
-import 'package:phase3/features/profile/presentation/widgets/change_language.dart';
-import 'package:phase3/features/profile/presentation/widgets/column_item.dart';
-import 'package:phase3/features/profile/presentation/widgets/contact_us.dart';
+import '../../../../core/resources/strings_manager.dart';
+import '../../../../core/utils/loading_indicator.dart';
+import '../widgets/change_language.dart';
+import '../widgets/column_item.dart';
+import '../widgets/contact_us.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../cubit/profile/profile_cubit.dart';
 import '../widgets/dark_mode_switch.dart';

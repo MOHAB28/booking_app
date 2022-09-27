@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'color_manager.dart';
 import 'font_manager.dart';
 import 'styles_manager.dart';
@@ -15,16 +14,29 @@ ThemeData getApplicationLighTheme() {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
-      centerTitle: false,
+      centerTitle: true,
       backgroundColor: ColorManager.sWhite,
       iconTheme: const IconThemeData(color: Colors.black),
       elevation: AppSize.s0,
-      titleTextStyle: getMediumStyle(
+      titleTextStyle: getBoldStyle(
         fontSize: FontSize.s18,
         color: Colors.black, // It will be changed
         // color: ColorManager.black,
       ),
     ),
+    primarySwatch: ColorManager.mGreen,
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: Colors.white,
+      elevation: AppSize.s3,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.black,
+        textStyle: getRegularStyle(color: Colors.black, fontSize: FontSize.s18),
+      ),
+    ),
+
+    cardColor: Colors.white,
 
     iconTheme: const IconThemeData(
       color: Colors.black,
@@ -50,70 +62,76 @@ ThemeData getApplicationLighTheme() {
     ),
 
     // _______/ It will be updated \_________________________
-    // textTheme: TextTheme(
-    //   titleLarge: getBoldStyle(
-    //     fontSize: FontSize.s20,
-    //     color: ColorManager.black,
-    //   ),
-    //   // -- newsCardtitleTextStyle --
-    //   titleMedium: getBoldStyle(
-    //     color: Colors.black,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   // const -- popularCardTitleTextStyle --
-    //   titleSmall: getLightStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   bodyLarge: getMediumStyle(
-    //     color: Colors.black,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   //const -- newsCardtitleTextStyle --
-    //   bodyMedium: getMediumStyle(
-    //     color: Colors.grey,
-    //     fontSize: FontSize.s12,
-    //   ),
-    //   // const -- popularCardDateTextStyle --
-    //   bodySmall: getLightStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s12,
-    //   ),
-    // ),
+    textTheme: TextTheme(
+      titleLarge: getBoldStyle(
+        fontSize: FontSize.s22,
+        color: Colors.black,
+      ),
+      titleMedium: getBoldStyle(
+        fontSize: FontSize.s18,
+        color: Colors.black,
+      ),
+      titleSmall: getBoldStyle(
+        color: Colors.black,
+        fontSize: FontSize.s16,
+      ),
+      displayMedium: getRegularStyle(
+        color: Colors.black,
+        fontSize: FontSize.s18,
+      ),
+      displaySmall: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      bodyMedium: getRegularStyle(
+        color: ColorManager.bGreen,
+        fontSize: FontSize.s18,
+      ),
+      bodySmall: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s16,
+      ),
+    ),
     // input decoration theme (text form field)
-    // inputDecorationTheme:  InputDecorationTheme(
-        //   // content padding
-        //   contentPadding: const EdgeInsets.all(AppPadding.p8),
-        //   // hint style
-        //   hintStyle: getRegularStyle(
-        //       color: ColorManager.lightGrey, fontSize: FontSize.s14),
-        //   labelStyle:
-        //       getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
-        //   errorStyle: getRegularStyle(color: ColorManager.error),
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: Colors.white,
+      filled: true,
+      border: InputBorder.none,
+      // content padding
+      contentPadding: const EdgeInsets.all(AppPadding.p8),
+      // hint style
+      hintStyle: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      labelStyle: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      // enabled border style
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
 
-        //   // enabled border style
-        //   enabledBorder: const OutlineInputBorder(
-        //     borderSide:
-        //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-        //   ),
+      // focused border style
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
 
-        //   // focused border style
-        //   focusedBorder: const OutlineInputBorder(
-        //     borderSide:
-        //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-        //   ),
-
-        //   // error border style
-        //   errorBorder: const OutlineInputBorder(
-        //     borderSide: BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-        //   ),
-        //   // focused border style
-        //   focusedErrorBorder: const OutlineInputBorder(
-        //     borderSide:
-        //         BorderSide(color: ColorManager.lightGrey, width: AppSize.s1_5),
-        //   ),
-        //   // label style
-        // ),
+      // error border style
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
+      // focused border style
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
+      // label style
+    ),
   );
 }
 
@@ -126,16 +144,32 @@ ThemeData getApplicationDarkTheme() {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
-      centerTitle: false,
+      centerTitle: true,
       backgroundColor: ColorManager.sBlack,
       iconTheme: const IconThemeData(color: Colors.white),
       elevation: AppSize.s0,
-      titleTextStyle: getMediumStyle(
+      titleTextStyle: getBoldStyle(
         fontSize: FontSize.s18,
-         color: Colors.white, // It will be changed
+        color: Colors.white, // It will be changed
         // color: ColorManager.white,
       ),
     ),
+
+    primarySwatch: ColorManager.mGreen,
+
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: ColorManager.bBlack,
+      elevation: AppSize.s3,
+    ),
+
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.white,
+        textStyle: getRegularStyle(color: Colors.white, fontSize: FontSize.s18),
+      ),
+    ),
+
+    cardColor: ColorManager.bBlack,
 
     listTileTheme: const ListTileThemeData(
       iconColor: Colors.white,
@@ -150,67 +184,71 @@ ThemeData getApplicationDarkTheme() {
       color: Colors.white,
     ),
 
-    // textTheme: TextTheme(
-    //   titleLarge: getBoldStyle(
-    //     fontSize: FontSize.s20,
-    //     color: ColorManager.white,
-    //   ),
-    //   // -- newsCardtitleTextStyle --
-    //   titleMedium: getBoldStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   // const -- popularCardTitleTextStyle --
-    //   titleSmall: getLightStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //    bodyLarge: getMediumStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s16,
-    //   ),
-    //   //const -- newsCardtitleTextStyle --
-    //   bodyMedium: getMediumStyle(
-    //     color: Colors.grey,
-    //     fontSize: FontSize.s12,
-    //   ),
-    //   // const -- popularCardDateTextStyle --
-    //   bodySmall: getLightStyle(
-    //     color: Colors.white,
-    //     fontSize: FontSize.s12,
-    //   ),
-    // ),
-
+    textTheme: TextTheme(
+      titleLarge: getBoldStyle(
+        fontSize: FontSize.s22,
+        color: Colors.white,
+      ),
+      titleMedium: getBoldStyle(
+        fontSize: FontSize.s18,
+        color: Colors.white,
+      ),
+      titleSmall: getBoldStyle(
+        color: Colors.white,
+        fontSize: FontSize.s16,
+      ),
+      displayMedium: getRegularStyle(
+        color: Colors.white,
+        fontSize: FontSize.s18,
+      ),
+      displaySmall: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      bodySmall: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s16,
+      ),
+    ),
     // // input decoration theme (text form field)
-    // inputDecorationTheme: InputDecorationTheme(
-    //   // content padding
-    //   contentPadding: const EdgeInsets.all(AppPadding.p8),
-    //   // hint style
-    //   hintStyle: getRegularStyle(
-    //       color: ColorManager.lightGrey, fontSize: FontSize.s14),
-    //   labelStyle:
-    //       getMediumStyle(color: ColorManager.lightGrey, fontSize: FontSize.s14),
-    //   errorStyle: getRegularStyle(color: ColorManager.error),
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: ColorManager.bBlack,
+      filled: true,
+      border: InputBorder.none,
+      // content padding
+      contentPadding: const EdgeInsets.all(AppPadding.p8),
+      // hint style
+      hintStyle: getLightStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      labelStyle: getRegularStyle(
+        color: ColorManager.gGrey,
+        fontSize: FontSize.s14,
+      ),
+      // enabled border style
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
 
-    //   // enabled border style
-    //   enabledBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.white, width: AppSize.s1_5),
-    //   ),
+      // focused border style
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
 
-    //   // focused border style
-    //   focusedBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.white, width: AppSize.s1_5),
-    //   ),
-
-    //   // error border style
-    //   errorBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.error, width: AppSize.s1_5),
-    //   ),
-    //   // focused border style
-    //   focusedErrorBorder: const OutlineInputBorder(
-    //     borderSide: BorderSide(color: ColorManager.white, width: AppSize.s1_5),
-    //   ),
-    //   // label style
-    // ),
+      // error border style
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
+      // focused border style
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSize.s50),
+        borderSide: BorderSide.none,
+      ),
+      // label style
+    ),
   );
 }

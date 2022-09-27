@@ -3,11 +3,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:phase3/core/network/dio_helper.dart';
-import 'package:phase3/core/resources/color_manager.dart';
-import 'package:phase3/core/resources/routes.dart';
-import 'package:phase3/features/profile/presentation/cubit/profile/profile_cubit.dart';
-import 'package:image_picker/image_picker.dart';
+import '../../../../../core/network/dio_helper.dart';
+import '../../../../../core/resources/color_manager.dart';
+import '../../../../../core/resources/routes.dart';
+import '../../cubit/profile/profile_cubit.dart';
 
 import '../../../../../core/network/end_points.dart';
 import '../../../../../core/resources/values_manager.dart';
@@ -47,11 +46,12 @@ class UserPhoto extends StatelessWidget {
                 backgroundColor: ColorManager.bGreen,
                 radius: AppSize.s18,
                 child: IconButton(
-                  onPressed: () async => await getImage().then(
-                    (_) => Navigator.of(context).pushNamed(
-                        Routes.updateProfilePage,
-                        arguments: userUpdatedProfile),
-                  ),
+                  onPressed: () {},
+                  // async => await getImage().then(
+                  //   (_) => Navigator.of(context).pushNamed(
+                  //       Routes.updateProfilePage,
+                  //       arguments: userUpdatedProfile),
+                  // ),
                   icon: const Icon(
                     Icons.camera_alt,
                     color: ColorManager.bBlack,
@@ -89,21 +89,21 @@ class UserPhoto extends StatelessWidget {
   }
 
   // Get photo from gallery
-  Future getImage() async {
-    File image;
-    final picker = ImagePicker();
-    var pickedImage = await picker.pickImage(
-      source: ImageSource.gallery,
-      imageQuality: AppInts.i50,
-      maxHeight: AppSize.s500,
-      maxWidth: AppSize.s500,
-    );
+  // Future getImage() async {
+  //   File image;
+  //   final picker = ImagePicker();
+  //   var pickedImage = await picker.pickImage(
+  //     source: ImageSource.gallery,
+  //     imageQuality: AppInts.i50,
+  //     maxHeight: AppSize.s500,
+  //     maxWidth: AppSize.s500,
+  //   );
 
-    if (pickedImage != null) {
-      image = File(pickedImage.path);
-      uploadImage(image);
-    } else {
-      return;
-    }
-  }
+  //   if (pickedImage != null) {
+  //     image = File(pickedImage.path);
+  //     uploadImage(image);
+  //   } else {
+  //     return;
+  //   }
+  // }
 }
