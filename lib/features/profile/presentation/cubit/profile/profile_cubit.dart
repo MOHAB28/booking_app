@@ -1,20 +1,23 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../domain/usecases/update_profile_use_case.dart';
-import '../../domain/usecases/get_profile_use_case.dart';
-
-import '../../domain/entities/profile_entity.dart';
+import '../../../../../core/usecase/usecase.dart';
+import '../../../domain/entities/profile_entity.dart';
+import '../../../domain/usecases/get_profile_use_case.dart';
+import '../../../domain/usecases/update_profile_use_case.dart';
 
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   final GetProfileUseCase _getProfile;
   final UpdateProfileUseCase _updateProfile;
-  ProfileCubit(this._getProfile, this._updateProfile) : super(ProfileInitial());
+  ProfileCubit(
+    this._getProfile,
+    this._updateProfile,
+  ) : super(ProfileInitial());
 
-  Future<void> getProfile(String token) async {
+  Future<void> getProfile() async {
     emit(ProfileLoadingState());
-    final response = await _getProfile(token);
+    final response = await _getProfile(NoParams());
 
     response.fold(
       (fail) => emit(FailToGetProfileState()),
@@ -29,8 +32,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       ProfileUseCaseData(
         name: data.name,
         email: data.email,
-        image: data.image,
-        token: data.token,
+        image: data.image ,
       ),
     );
 
@@ -42,12 +44,12 @@ class ProfileCubit extends Cubit<ProfileState> {
 }
 
 class ProfileCubitData {
-  final String name, email, image, token;
+  final String name, email;
+  final String? image;
 
   ProfileCubitData({
     required this.name,
     required this.email,
-    required this.image,
-    required this.token,
+    this.image,
   });
 }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import '../../../get_hotels/domain/entities/get_hotels_entities.dart';
 
 class GetBookingsEntity extends Equatable {

@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-
 import '../../../../core/error/exception.dart';
 import '../../../../core/network/network_info.dart';
 import '../../domain/entities/profile_entity.dart';
@@ -15,10 +14,10 @@ class ProfileRepositoryImplementation implements ProfileRepository {
   //__________________________get profile_____________________________________
   @override
   Future<Either<PrimaryServerException, ProfileEntity>> getProfile(
-      String token) async {
+      ) async {
     if (await _networkInfo.isConnected) {
       final ProfileEntity profileData =
-          await _remoteDataSource.getProfile(token);
+          await _remoteDataSource.getProfile();
       return Right(profileData);
     } else {
       throw Left(

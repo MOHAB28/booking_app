@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:phase3/core/resources/color_manager.dart';
-import 'package:phase3/core/resources/values_manager.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/values_manager.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String? titleText;

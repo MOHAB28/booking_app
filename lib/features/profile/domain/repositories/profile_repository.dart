@@ -4,20 +4,20 @@ import '../../../../core/error/exception.dart';
 import '../entities/profile_entity.dart';
 
 abstract class ProfileRepository {
-  Future<Either<PrimaryServerException, ProfileEntity>> getProfile(
-      String token);
+  Future<Either<PrimaryServerException, ProfileEntity>> getProfile();
 
   Future<Either<PrimaryServerException, ProfileEntity>> updateProfile(
-      ProfileData data);
+    ProfileData data,
+  );
 }
 
 class ProfileData {
-  final String name, email, image, token;
+  final String name, email;
+  final String? image;
 
   ProfileData({
     required this.name,
     required this.email,
-    required this.image,
-    required this.token,
+    this.image,
   });
 }

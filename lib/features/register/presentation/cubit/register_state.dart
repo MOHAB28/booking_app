@@ -1,5 +1,6 @@
 
 import 'package:equatable/equatable.dart';
+
 import '../../domain/entities/register_entity.dart';
 
 abstract class RegisterState extends Equatable {
