@@ -20,9 +20,18 @@ class SuccessToGetProfileState extends ProfileState {
 
 class FailToGetProfileState extends ProfileState {}
 
+class UpdataProfileLoadingState extends ProfileState {}
+
 class UpdatingSuccessState extends ProfileState {
   final ProfileEntity profile;
   const UpdatingSuccessState(this.profile);
   @override
   List<Object> get props => [profile];
 }
+
+class ChangeProfileImageSuccessState extends ProfileState {}
+
+class ChangeProfileImageErrorState extends ProfileState {}
+
+class AppThemeModeState extends ProfileState {}
+class AppThemeModeAgState extends ProfileState {}

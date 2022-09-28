@@ -84,7 +84,7 @@ class _MapPageState extends State<MapPage> {
                                   .getAllHotelsData.getHotelData.length,
                               itemBuilder: (context, i) {
                                 return CommonCard(
-            color: Colors.white,
+
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(15)),
               child: AspectRatio(

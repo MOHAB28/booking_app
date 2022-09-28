@@ -52,12 +52,13 @@ ThemeData getApplicationLighTheme() {
     ),
     //BottomNavigationBarTheme
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      // backgroundColor: ColorManager.bottomNavColor,
-      elevation: AppSize.s0,
-      unselectedLabelStyle: TextStyle(fontSize: FontSize.s0),
-      selectedLabelStyle: TextStyle(fontSize: FontSize.s0),
+      selectedItemColor: Colors.teal,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      backgroundColor: Colors.white,
+      selectedLabelStyle: TextStyle(color: Colors.teal),
+      unselectedItemColor: Colors.grey,
+      unselectedLabelStyle: TextStyle(color: Colors.grey),
       type: BottomNavigationBarType.fixed,
     ),
 
@@ -153,6 +154,17 @@ ThemeData getApplicationDarkTheme() {
         color: Colors.white, // It will be changed
         // color: ColorManager.white,
       ),
+    ),
+
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: Colors.teal,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      backgroundColor: ColorManager.bBlack,
+      selectedLabelStyle: TextStyle(color: Colors.teal),
+      unselectedItemColor: Colors.grey,
+      unselectedLabelStyle: TextStyle(color: Colors.grey),
+      type: BottomNavigationBarType.fixed,
     ),
 
     primarySwatch: ColorManager.mGreen,

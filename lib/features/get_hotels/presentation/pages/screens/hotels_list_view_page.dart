@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:phase3/core/resources/values_manager.dart';
 import '../../../domain/entities/get_hotels_entities.dart';
 import '../widgets/common_card.dart';
 import '../widgets/list_cell_animation_view.dart';
@@ -29,7 +28,6 @@ class HotelListViewPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
         child: CommonCard(
-          color: Colors.white,
           child: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(15)),
             child: AspectRatio(
@@ -39,117 +37,71 @@ class HotelListViewPage extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       AspectRatio(
-                          aspectRatio: 0.86,
-                          child: hotelData.hotelImages.isNotEmpty
-                              ? Image.network(
-                                  'http://api.mahmoudtaha.com/images/${hotelData.hotelImages[0].image}',
-                                  fit: BoxFit.cover,
-                                )
-                              : Image.asset(
-                                  'assets/images/hotel_2.png',
-                                  fit: BoxFit.cover,
-                                )),
+                        aspectRatio: 0.86,
+                        child: hotelData.hotelImages.isNotEmpty
+                            ? Image.network(
+                                'http://api.mahmoudtaha.com/images/${hotelData.hotelImages[0].image}',
+                                fit: BoxFit.cover,
+                              )
+                            : Image.asset(
+                                'assets/images/hotel_2.png',
+                                fit: BoxFit.cover,
+                              ),
+                      ),
                       Expanded(
                         child: Container(
                           padding: EdgeInsets.all(
-                              MediaQuery.of(context).size.width >= 360
-                                  ? 12
-                                  : 8),
+                            MediaQuery.of(context).size.width >= 360 ? 12 : 8,
+                          ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(
-                                hotelData.name,
-                                maxLines: 2,
-                                textAlign: TextAlign.left,
-                                style: const TextStyle(
-                                  fontSize: 16,
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: AppPadding.p15),
+                                child: Text(
+                                  hotelData.name,
+                                  maxLines: 1,
+                                  textAlign: TextAlign.left,
+                                  style: Theme.of(context).textTheme.titleMedium,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                overflow: TextOverflow.ellipsis,
                               ),
                               Text(
-                                hotelData.description,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
+                                hotelData.address,
+                                maxLines: 1,
+                                textAlign: TextAlign.left,
+                                style: Theme.of(context).textTheme.bodySmall,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               Expanded(
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
                                     Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(
-                                                FontAwesomeIcons.mapMarkerAlt,
-                                                size: 12,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                              ),
-                                              Text(
-                                                hotelData.address,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: const TextStyle(
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                            ],
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.star,
+                                            color:
+                                                Theme.of(context).primaryColor,
                                           ),
-                                          RatingBarIndicator(
-                                            rating:
-                                                double.tryParse(hotelData.rate)!
-                                                    .toDouble(),
-                                            itemBuilder: (context, index) =>
-                                                const Icon(
-                                              Icons.star,
-                                              color: Colors.teal,
-                                            ),
-                                            itemCount: 5,
-                                            unratedColor: Colors.grey,
-                                            itemSize: 18.0,
-                                            direction: Axis.horizontal,
+                                          const SizedBox(width: AppSize.s5),
+                                          Text(
+                                            hotelData.rate,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall,
                                           ),
                                         ],
                                       ),
                                     ),
-                                    FittedBox(
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 8),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: <Widget>[
-                                            Text(
-                                              "\$${hotelData.price}",
-                                              textAlign: TextAlign.left,
-                                              style:
-                                                  const TextStyle(fontSize: 22),
-                                            ),
-                                            const Padding(
-                                              padding:
-                                                  EdgeInsets.only(top: 2.0),
-                                              child: Text(
-                                                ("Per Night"),
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                    Text(
+                                      '\$${hotelData.price}',
+                                      textAlign: TextAlign.left,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium,
                                     ),
                                   ],
                                 ),
