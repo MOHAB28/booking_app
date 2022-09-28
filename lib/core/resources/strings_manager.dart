@@ -56,5 +56,7 @@ class AppStrings {
   static const String overallRating = 'Overall rating';
   static const String photos = 'Photos';
   static const String bookNow = 'Book now';
+  // 
+  static const String save = 'Save';
 
 }

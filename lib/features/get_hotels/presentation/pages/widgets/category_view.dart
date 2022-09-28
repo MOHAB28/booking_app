@@ -38,7 +38,6 @@ class CategoryView extends StatelessWidget {
           padding:
           const EdgeInsets.only(left: 16, bottom: 24, top: 16, right: 8),
           child: CommonCard(
-            color: Colors.white,
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(15)),
 

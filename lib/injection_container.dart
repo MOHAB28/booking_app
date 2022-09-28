@@ -26,7 +26,6 @@ import 'core/network/dio_helper.dart';
 import 'features/login/data/repositories/login_repo_impl.dart';
 import 'features/login/domain/repositories/login_repo.dart';
 import 'features/profile/domain/usecases/get_profile_use_case.dart';
-import 'features/profile/presentation/cubit/theme/theme_cubit.dart';
 import 'features/register/data/datasources/register_remote_data_source.dart';
 import 'features/register/data/repositories/register_repo_impl.dart';
 import 'features/register/domain/repositories/register_repo.dart';
@@ -62,7 +61,6 @@ Future<void> init() async {
     () => ProfileCubit(sl(), sl()),
   );
 
-  sl.registerFactory(() => ThemeCubit());
   sl.registerFactory(
     () => BookingCubit(
       createBookingUsecase: sl(),

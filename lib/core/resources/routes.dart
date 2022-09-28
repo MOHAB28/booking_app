@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:phase3/features/profile/presentation/pages/update_profile.dart';
-
 import '../../features/profile/presentation/pages/profile_test_page.dart';
 import '../../features/get_hotels/presentation/pages/layout/home_layout.dart';
 import '../../features/login/presentation/pages/login_page.dart';
@@ -22,9 +20,7 @@ class Routes {
   static const String editFilterPageKey = '/EditFilterPage';
   static Map<String, WidgetBuilder> get routes {
     return {
-      profileTestPage: (context) => ProfileTestPage(),
-      updateProfilePage: (context) => const UpdateProfilePage(),
-
+      profileTestPage: (context) => const ProfileTestPage(),
       layoutPage: (context) => const HomeLayout(),
       welcomeOnboardingPageKey: (context) => const WelcomeOnboardingPage(),
       onboardingPageKey: (context) => const OnboardingPage(),

@@ -34,6 +34,7 @@ class SearchItemBuilder extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppSize.s5),
                     child: Image(
                       height: AppSize.s150,
+                      width: double.infinity,
                       image: NetworkImage(
                         'http://api.mahmoudtaha.com/images/${hotelsDataEntity.hotelImages[0].image}',
                       ),
@@ -116,9 +117,14 @@ class TextWithIcon extends StatelessWidget {
           color: ColorManager.bGreen,
         ),
         const SizedBox(width: AppSize.s4),
-        Text(
-          text,
-          style: Theme.of(context).textTheme.displaySmall,
+        SizedBox(
+          width: AppSize.s150,
+          child: Text(
+            text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.displaySmall,
+          ),
         ),
       ],
     );

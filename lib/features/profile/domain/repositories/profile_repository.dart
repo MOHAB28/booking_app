@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exception.dart';
@@ -13,7 +15,7 @@ abstract class ProfileRepository {
 
 class ProfileData {
   final String name, email;
-  final String? image;
+  final File? image;
 
   ProfileData({
     required this.name,

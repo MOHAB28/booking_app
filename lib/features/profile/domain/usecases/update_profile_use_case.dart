@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/exception.dart';
@@ -25,7 +27,7 @@ class UpdateProfileUseCase
 
 class ProfileUseCaseData {
   final String name, email;
-  final String? image;
+  final File? image;
 
   ProfileUseCaseData({
     required this.name,
