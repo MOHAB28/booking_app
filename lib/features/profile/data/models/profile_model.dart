@@ -69,7 +69,7 @@ class DataModel extends DataEntity {
         image: json["image"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        googleId: json["google_id"],
+        googleId: json["google_id"]??'',
         provider: json["provider"],
       );
 

@@ -30,6 +30,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
         slivers: [
           SliverAppBar(
             expandedHeight: MediaQuery.of(context).size.height,
+            pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: widget.hotelsDataEntity.hotelImages.isNotEmpty
                   ? Image(

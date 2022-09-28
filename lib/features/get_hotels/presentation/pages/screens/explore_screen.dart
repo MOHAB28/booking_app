@@ -137,8 +137,8 @@ class _ExploreScreenState extends State<ExploreScreen>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Theme.of(context).backgroundColor.withOpacity(0.4),
-                          Theme.of(context).backgroundColor.withOpacity(0.0),
+                          Theme.of(context).scaffoldBackgroundColor.withOpacity(0.4),
+                          Theme.of(context).scaffoldBackgroundColor.withOpacity(0.0),
                         ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,

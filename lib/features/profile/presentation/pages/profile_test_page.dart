@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/resources/strings_manager.dart';
@@ -7,68 +8,77 @@ import '../widgets/column_item.dart';
 import '../widgets/contact_us.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../cubit/profile/profile_cubit.dart';
-import '../widgets/dark_mode_switch.dart';
-import '../widgets/edit_profile.dart';
 import '../widgets/photo_and_profile.dart';
+import 'update_profile.dart';
 
 class ProfileTestPage extends StatelessWidget {
-  ProfileTestPage({super.key});
-  
-  
+  const ProfileTestPage({super.key});
 
-  final ProfileCubitData data = ProfileCubitData(
-    name: 'mohamed',
-    email: 'mohamed@gmail.com',
-    image: 'mohamed.png',
-  );
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-        future: BlocProvider.of<ProfileCubit>(context).getProfile(),
-        builder: (context, snapshot) => BlocBuilder<ProfileCubit, ProfileState>(
-          builder: (context, state) {
-            if (state is ProfileLoadingState) {
-              return const LoadingIndicator();
-            } else if (state is SuccessToGetProfileState) {
-              final ProfileCubitData profileData = ProfileCubitData(
-                name: state.profile.data.name,
-                email: state.profile.data.email,
-                image: state.profile.data.image,
-              );
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: AppPadding.p50,
-                  horizontal: AppPadding.p20,
-                ),
-                child: Column(
-                  children: [
-                    NameAndPhoto(state: state),
-                    const SizedBox(height: AppSize.s10),
-                    // Edit profile
-                    ColumnItem(
-                        itemText: AppStrings.editProfile,
-                        itemWidget: EditProfileWidget(profile: profileData)),
-                    // change language
-                    const ColumnItem(
-                        itemText: AppStrings.changeLanguage,
-                        itemWidget: ChangeLanguage()),
-                    // Contact us
-                    const ColumnItem(
-                        itemText: AppStrings.contactUs,
-                        itemWidget: ContactUs()),
-                    // Dark mode switch
-                    const ColumnItem(
-                        itemText: AppStrings.darkMode,
-                        itemWidget: DarkModeSwitch()),
-                  ],
-                ),
-              );
-            }
-            return const SizedBox();
-          },
-        ),
-      ),
+    return BlocBuilder<ProfileCubit, ProfileState>(
+      builder: (context, state) {
+        var profile = ProfileCubit.get(context).profile;
+        var cubit = ProfileCubit.get(context, listen: false);
+        bool isDark = ProfileCubit.get(context).isDark;
+        if (profile != null) {
+          return RefreshIndicator(
+            onRefresh: () async {
+              await ProfileCubit.get(context).getProfile();
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: AppPadding.p50,
+                horizontal: AppPadding.p20,
+              ),
+              child: Column(
+                children: [
+                  NameAndPhoto(profile: profile),
+                  const SizedBox(height: AppSize.s10),
+                  // Edit profile
+                  ColumnItem(
+                    itemText: AppStrings.editProfile,
+                    itemWidget: IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () => Navigator.of(context).push(
+                        CupertinoPageRoute(
+                          builder: (context) => UpdateProfilePage(
+                            profile: profile,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // change language
+                  const ColumnItem(
+                    itemText: AppStrings.changeLanguage,
+                    itemWidget: ChangeLanguage(),
+                  ),
+                  // Contact us
+                  const ColumnItem(
+                    itemText: AppStrings.contactUs,
+                    itemWidget: ContactUs(),
+                  ),
+                  // Dark mode switch
+                  ColumnItem(
+                    itemText: AppStrings.darkMode,
+                    itemWidget: IconButton(
+                      onPressed: () {
+                        cubit.changeThemeMode();
+                      },
+                      icon: isDark
+                          ? const Icon(Icons.light_mode)
+                          : const Icon(Icons.dark_mode),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        } else {
+          return const LoadingIndicator();
+        }
+      },
     );
   }
 }
