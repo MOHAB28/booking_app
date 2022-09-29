@@ -1,8 +1,8 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../core/resources/values_manager.dart';
-import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../get_hotels/domain/entities/get_hotels_entities.dart';
@@ -10,6 +10,7 @@ import '../../../login/presentation/widgets/custom_button_builder.dart';
 import '../../../search/presentation/widgets/search_item_builder.dart';
 import '../cubit/booking_cubit.dart';
 import '../widgets/custom_sliver_padding.dart';
+import '../widgets/delegate.dart';
 
 class HotelDetailsPage extends StatefulWidget {
   final HotelDataEntity hotelsDataEntity;
@@ -23,49 +24,38 @@ class HotelDetailsPage extends StatefulWidget {
 }
 
 class _HotelDetailsPageState extends State<HotelDetailsPage> {
+  final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
+        controller: _scrollController,
         slivers: [
-          SliverAppBar(
-            expandedHeight: MediaQuery.of(context).size.height,
+          SliverPersistentHeader(
             pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: widget.hotelsDataEntity.hotelImages.isNotEmpty
-                  ? Image(
-                      image: NetworkImage(
-                        'http://api.mahmoudtaha.com/images/${widget.hotelsDataEntity.hotelImages[0].image}',
-                      ),
-                      fit: BoxFit.cover,
-                    )
-                  : const Image(
-                      image: AssetImage(ImageAssets.wOnbImage),
-                      fit: BoxFit.cover,
-                    ),
-            ),
-            leadingWidth: AppSize.s70,
-            leading: CircleAvatar(
-              backgroundColor: Colors.black45,
-              child: IconButton(
-                onPressed: () => Navigator.pop(context),
-                icon: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                ),
-              ),
+            delegate: Delegate(
+              context,
+              widget.hotelsDataEntity,
+              _scrollController,
             ),
           ),
           CustomSliverPadding(
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      widget.hotelsDataEntity.name,
-                      style: Theme.of(context).textTheme.titleLarge,
+                    SizedBox(
+                      width: AppSize.s250,
+                      child: Text(
+                        widget.hotelsDataEntity.name,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                     ),
                     const SizedBox(height: AppSize.s4),
                     TextWithIcon(
@@ -88,7 +78,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
                     ),
                     const SizedBox(height: AppSize.s4),
                     Text(
-                      AppStrings.perNight,
+                      AppStrings.perNight.tr(),
                       style: Theme.of(context).textTheme.displaySmall,
                     ),
                   ],
@@ -101,7 +91,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppStrings.summary,
+                  AppStrings.summary.tr(),
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
                 const SizedBox(height: AppSize.s5),
@@ -130,7 +120,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
                     ),
                     const SizedBox(width: AppSize.s8),
                     Text(
-                      AppStrings.overallRating,
+                      AppStrings.overallRating.tr(),
                       style: Theme.of(context).textTheme.bodyMedium!,
                     ),
                   ],
@@ -144,7 +134,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppStrings.photos,
+                    AppStrings.photos.tr(),
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   const SizedBox(height: AppSize.s15),
@@ -192,7 +182,7 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
                     : CustomButtonBuilder(
                         onTap: () => BookingCubit.get(context)
                             .createBooking(widget.hotelsDataEntity.id),
-                        title: AppStrings.bookNow,
+                        title: AppStrings.bookNow.tr(),
                       ),
               );
             },

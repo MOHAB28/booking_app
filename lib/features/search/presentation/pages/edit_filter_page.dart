@@ -1,7 +1,7 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../login/presentation/widgets/custom_button_builder.dart';
@@ -30,12 +30,12 @@ class _EditFilterPageState extends State<EditFilterPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              AppStrings.filter,
+              AppStrings.filter.tr(),
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: AppSize.s10),
             Text(
-              AppStrings.priceForoneNight,
+              AppStrings.priceForoneNight.tr(),
               style: Theme.of(context).textTheme.displaySmall,
             ),
             const SizedBox(height: AppSize.s10),
@@ -60,14 +60,14 @@ class _EditFilterPageState extends State<EditFilterPage> {
               keyboardType: TextInputType.text,
               errorText: '',
               controller: _controller,
-              hintText: AppStrings.enterUrAddress,
-              titleText: AppStrings.address,
+              hintText: AppStrings.enterUrAddress.tr(),
+              titleText: AppStrings.address.tr(),
             ),
             const SizedBox(height: AppSize.s10),
             const Divider(),
             const SizedBox(height: AppSize.s10),
             Text(
-              AppStrings.distanceFromCity,
+              AppStrings.distanceFromCity.tr(),
               style: Theme.of(context).textTheme.displaySmall,
             ),
             const SizedBox(height: AppSize.s10),
@@ -89,7 +89,7 @@ class _EditFilterPageState extends State<EditFilterPage> {
         if (state is SearchLoaded) {
           Navigator.pop(context);
         } else if (state is SearchFailure) {
-          FlushbarHelper.createError(message: AppStrings.somethingWrong)
+          FlushbarHelper.createError(message: AppStrings.somethingWrong.tr())
               .show(context);
         }
       }, builder: (context, state) {
@@ -113,7 +113,7 @@ class _EditFilterPageState extends State<EditFilterPage> {
                     maxPrice: selectedRange.end,
                     distance: _currentSliderValue,
                   ),
-                  title: AppStrings.apply,
+                  title: AppStrings.apply.tr(),
                 ),
         );
       }),

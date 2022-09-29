@@ -4,6 +4,8 @@ import '../../../../core/resources/routes.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../widgets/custom_button_builder.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class WelcomeOnboardingPage extends StatefulWidget {
   const WelcomeOnboardingPage({super.key});
@@ -42,17 +44,17 @@ class _WelcomeOnboardingPageState extends State<WelcomeOnboardingPage> {
               child: Column(
                 children: [
                   Text(
-                    AppStrings.motel,
+                    AppStrings.motel.tr(),
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: AppSize.s15),
                   Text(
-                    AppStrings.bestHotelDeals,
+                    AppStrings.bestHotelDeals.tr(),
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const Spacer(),
                   CustomButtonBuilder(
-                    title: AppStrings.getStarted,
+                    title: AppStrings.getStarted.tr(),
                     onTap: () =>
                         Navigator.pushNamed(context, Routes.onboardingPageKey),
                   ),

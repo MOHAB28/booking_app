@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../../core/resources/color_manager.dart';
 import '../../../../../core/resources/font_manager.dart';
@@ -16,7 +17,7 @@ class EditProfileTxt extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Text(
-        AppStrings.editProfile,
+        AppStrings.editProfile.tr(),
         style: getBoldStyle(
             color: ColorManager.bBlack, fontSize: FontSize.s20),
       ),

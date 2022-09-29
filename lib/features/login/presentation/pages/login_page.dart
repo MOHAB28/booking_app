@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/resources/routes.dart';
 import '../cubit/login_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../main.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
@@ -55,23 +56,23 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppStrings.login,
+                  AppStrings.login.tr(),
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: AppSize.s20),
                 Row(
-                  children: const [
+                  children:  [
                     Expanded(
                       child: FastAuthButton(
-                        title: AppStrings.facebook,
+                        title: AppStrings.facebook.tr(),
                         color: ColorManager.bFacebook,
                         image: ImageAssets.facebook,
                       ),
                     ),
-                    SizedBox(width: AppSize.s10),
+                    const SizedBox(width: AppSize.s10),
                     Expanded(
                       child: FastAuthButton(
-                        title: AppStrings.twitter,
+                        title: AppStrings.twitter.tr(),
                         color: ColorManager.bTwitter,
                         image: ImageAssets.twitter,
                       ),
@@ -81,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: AppSize.s15),
                 Center(
                   child: Text(
-                    AppStrings.orLoginWithin,
+                    AppStrings.orLoginWithin.tr(),
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
@@ -91,9 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                   keyboardType: TextInputType.emailAddress,
                   padding: EdgeInsets.zero,
                   errorText: cubit.errorEmail,
-                  hintText: AppStrings.enterUrEmail,
+                  hintText: AppStrings.enterUrEmail.tr(),
                   onChanged: (txt) {},
-                  titleText: AppStrings.urEmail,
+                  titleText: AppStrings.urEmail.tr(),
                 ),
                 const SizedBox(height: AppSize.s12),
                 CustomTextFormField(
@@ -101,16 +102,16 @@ class _LoginPageState extends State<LoginPage> {
                   keyboardType: TextInputType.text,
                   padding: EdgeInsets.zero,
                   errorText: cubit.errorPassword,
-                  hintText: AppStrings.enterPass,
+                  hintText: AppStrings.enterPass.tr(),
                   onChanged: (txt) {},
-                  titleText: AppStrings.password,
+                  titleText: AppStrings.password.tr(),
                 ),
                 const SizedBox(height: AppSize.s15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      AppStrings.forgotPass,
+                      AppStrings.forgotPass.tr(),
                       style: Theme.of(context).textTheme.displaySmall,
                     ),
                   ],
@@ -122,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                   )
                 ] else ...[
                   CustomButtonBuilder(
-                    title: AppStrings.login,
+                    title: AppStrings.login.tr(),
                     onTap: () {
                       if (cubit.allValidation()) {
                         BlocProvider.of<LoginCubit>(context).login(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/resources/strings_manager.dart';
 import '../../../../../core/resources/values_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../login/presentation/widgets/custom_text_field.dart';
 import '../../../domain/entities/get_hotels_entities.dart';
 import '../../cubit/get_hotels_cubit.dart';
@@ -106,8 +107,8 @@ class _ExploreScreenState extends State<ExploreScreen>
                         );
                       } else if (index == 2) {
                         return TitleView(
-                          titleTxt: ("Best Deals"),
-                          subTxt: ("View All"),
+                          titleTxt: AppStrings.bestDeals.tr(),
+                          subTxt: AppStrings.viewAll.tr(),
                           animation: animation,
                           isLeftButton: true,
                           animationController: widget.animationController,
@@ -150,12 +151,12 @@ class _ExploreScreenState extends State<ExploreScreen>
                   top: MediaQuery.of(context).padding.top,
                   left: 0,
                   right: 0,
-                  child: const CustomTextFormField(
+                  child:  CustomTextFormField(
                     keyboardType: TextInputType.none,
                     errorText: '',
-                    padding: EdgeInsets.all(AppPadding.p20),
+                    padding: const EdgeInsets.all(AppPadding.p20),
                     showIcon: true,
-                    hintText: AppStrings.whereAreyouGoing,
+                    hintText: AppStrings.whereAreyouGoing.tr(),
                   ),
                 ),
               ],

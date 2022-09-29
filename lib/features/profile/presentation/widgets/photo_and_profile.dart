@@ -5,6 +5,8 @@ import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/style_manager.dart';
 import '../../../../core/resources/values_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class NameAndPhoto extends StatelessWidget {
   final ProfileEntity profile;
@@ -27,7 +29,7 @@ class NameAndPhoto extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge
             ),
             Text(
-              AppStrings.viewProfile,
+              AppStrings.viewProfile.tr(),
               style: getLightStyle(
                   color: ColorManager.gGrey, fontSize: FontSize.s16),
             ),

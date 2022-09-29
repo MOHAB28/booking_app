@@ -14,6 +14,8 @@ import '../../../login/presentation/widgets/custom_text_field.dart';
 import '../../../login/presentation/widgets/fast_auth_button.dart';
 import '../cubit/register_cubit.dart';
 import '../cubit/register_state.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -57,23 +59,23 @@ class _RegisterPageState extends State<RegisterPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppStrings.signUp,
+                  AppStrings.signUp.tr(),
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: AppSize.s20),
                 Row(
-                  children: const [
+                  children:  [
                     Expanded(
                       child: FastAuthButton(
-                        title: AppStrings.facebook,
+                        title: AppStrings.facebook.tr(),
                         color: ColorManager.bFacebook,
                         image: ImageAssets.facebook,
                       ),
                     ),
-                    SizedBox(width: AppSize.s10),
-                    Expanded(
+                    const SizedBox(width: AppSize.s10),
+                     Expanded(
                       child: FastAuthButton(
-                        title: AppStrings.twitter,
+                        title: AppStrings.twitter.tr(),
                         color: ColorManager.bTwitter,
                         image: ImageAssets.twitter,
                       ),
@@ -83,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(height: AppSize.s15),
                 Center(
                   child: Text(
-                    AppStrings.orLoginWithin,
+                    AppStrings.orLoginWithin.tr(),
                     style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
@@ -93,9 +95,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   keyboardType: TextInputType.text,
                   padding: EdgeInsets.zero,
                   errorText: cubit.errorName,
-                  hintText: AppStrings.enterName,
+                  hintText: AppStrings.enterName.tr(),
                   onChanged: (txt) {},
-                  titleText: AppStrings.name,
+                  titleText: AppStrings.name.tr(),
                 ),
                 const SizedBox(height: AppSize.s12),
                 CustomTextFormField(
@@ -103,9 +105,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   keyboardType: TextInputType.emailAddress,
                   padding: EdgeInsets.zero,
                   errorText: cubit.errorEmail,
-                  hintText: AppStrings.enterUrEmail,
+                  hintText: AppStrings.enterUrEmail.tr(),
                   onChanged: (txt) {},
-                  titleText: AppStrings.urEmail,
+                  titleText: AppStrings.urEmail.tr(),
                 ),
                 const SizedBox(height: AppSize.s12),
                 CustomTextFormField(
@@ -113,9 +115,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   keyboardType: TextInputType.text,
                   padding: EdgeInsets.zero,
                   errorText: cubit.errorPassword,
-                  hintText: AppStrings.enterPass,
+                  hintText: AppStrings.enterPass.tr(),
                   onChanged: (txt) {},
-                  titleText: AppStrings.password,
+                  titleText: AppStrings.password.tr(),
                 ),
                 const SizedBox(height: AppSize.s12),
                 CustomTextFormField(
@@ -123,9 +125,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   keyboardType: TextInputType.text,
                   padding: EdgeInsets.zero,
                   errorText: cubit.errorPasswordCon,
-                  hintText: AppStrings.enterPassAgain,
+                  hintText: AppStrings.enterPassAgain.tr(),
                   onChanged: (txt) {},
-                  titleText: AppStrings.password,
+                  titleText: AppStrings.password.tr(),
                 ),
                 const SizedBox(height: AppSize.s20),
                 if (state is RegisterLoading) ...[
@@ -134,7 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   )
                 ] else ...[
                   CustomButtonBuilder(
-                    title: AppStrings.login,
+                    title: AppStrings.login.tr(),
                     onTap: () {
                       if (cubit.allValidation()) {
                         cubit.register(

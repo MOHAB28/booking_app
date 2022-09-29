@@ -10,6 +10,8 @@ import '../../../../core/resources/values_manager.dart';
 import '../cubit/profile/profile_cubit.dart';
 import '../widgets/photo_and_profile.dart';
 import 'update_profile.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class ProfileTestPage extends StatelessWidget {
   const ProfileTestPage({super.key});
@@ -37,7 +39,7 @@ class ProfileTestPage extends StatelessWidget {
                   const SizedBox(height: AppSize.s10),
                   // Edit profile
                   ColumnItem(
-                    itemText: AppStrings.editProfile,
+                    itemText: AppStrings.editProfile.tr(),
                     itemWidget: IconButton(
                       icon: const Icon(Icons.edit),
                       onPressed: () => Navigator.of(context).push(
@@ -50,18 +52,18 @@ class ProfileTestPage extends StatelessWidget {
                     ),
                   ),
                   // change language
-                  const ColumnItem(
-                    itemText: AppStrings.changeLanguage,
-                    itemWidget: ChangeLanguage(),
+                   ColumnItem(
+                    itemText: AppStrings.changeLanguage.tr(),
+                    itemWidget:  ChangeLanguage(context: context),
                   ),
                   // Contact us
-                  const ColumnItem(
-                    itemText: AppStrings.contactUs,
-                    itemWidget: ContactUs(),
+                   ColumnItem(
+                    itemText: AppStrings.contactUs.tr(),
+                    itemWidget: const ContactUs(),
                   ),
                   // Dark mode switch
                   ColumnItem(
-                    itemText: AppStrings.darkMode,
+                    itemText: AppStrings.darkMode.tr(),
                     itemWidget: IconButton(
                       onPressed: () {
                         cubit.changeThemeMode();
