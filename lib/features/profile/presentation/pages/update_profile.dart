@@ -8,6 +8,8 @@ import '../../domain/entities/profile_entity.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../widgets/edit_profile_widgets/edit_profile_txt.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 
 class UpdateProfilePage extends StatefulWidget {
   final ProfileEntity profile;
@@ -90,7 +92,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                     CustomTextFormField(
                       keyboardType: TextInputType.text,
                       padding: EdgeInsets.zero,
-                      titleText: AppStrings.name,
+                      titleText: AppStrings.name.tr(),
                       controller: _nameController,
                       errorText: '',
                     ),
@@ -99,7 +101,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                     CustomTextFormField(
                       keyboardType: TextInputType.emailAddress,
                       padding: EdgeInsets.zero,
-                      titleText: AppStrings.email,
+                      titleText: AppStrings.urEmail.tr(),
                       controller: _emailController,
                       errorText: '',
                     ),
@@ -136,7 +138,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                       ),
                     );
                   },
-                  title: AppStrings.save,
+                  title: AppStrings.save.tr(),
                 ),
         );
       }),

@@ -92,6 +92,10 @@ ThemeData getApplicationLighTheme() {
         color: ColorManager.gGrey,
         fontSize: FontSize.s16,
       ),
+      headlineSmall: getRegularStyle(
+        color: ColorManager.sWhite,
+        fontSize: FontSize.s16,
+      ),
     ),
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
@@ -223,6 +227,10 @@ ThemeData getApplicationDarkTheme() {
       ),
       bodySmall: getRegularStyle(
         color: ColorManager.gGrey,
+        fontSize: FontSize.s16,
+      ),
+      headlineSmall: getRegularStyle(
+        color: ColorManager.sWhite,
         fontSize: FontSize.s16,
       ),
     ),

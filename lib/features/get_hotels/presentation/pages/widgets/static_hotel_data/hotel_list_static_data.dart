@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../../../../core/resources/static_hotels_images.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../../../core/resources/strings_manager.dart';
 import 'room_data.dart';
 
 class HotelListData {
@@ -42,8 +44,8 @@ class HotelListData {
   static List<HotelListData> hotelList = [
     HotelListData(
       imagePath: Localfiles.hotel_1,
-      titleTxt: 'Grand Royal Hotel',
-      subTxt: 'Wembley, London',
+      titleTxt: AppStrings.grandHotel.tr(),
+      subTxt: AppStrings.wembleyLondon.tr(),
       dist: 2.0,
       reviews: 80,
       rating: 4.4,

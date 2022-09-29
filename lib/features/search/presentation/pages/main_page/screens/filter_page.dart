@@ -6,6 +6,7 @@ import '../../../../../../core/resources/strings_manager.dart';
 import '../../../../../../core/resources/values_manager.dart';
 import '../../../cubit/search_cubit.dart';
 import '../../../widgets/search_item_builder.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class FilterPage extends StatefulWidget {
   final TextEditingController title;
@@ -35,8 +36,8 @@ class _FilterPageState extends State<FilterPage> {
                     onPressed: () {
                       if (widget.title.text.isEmpty) {
                         FlushbarHelper.createError(
-                                message: AppStrings.enterHotelName)
-                            .show(context);
+                          message: AppStrings.enterHotelName.tr(),
+                        ).show(context);
                       } else {
                         Navigator.pushNamed(
                           context,
@@ -46,10 +47,10 @@ class _FilterPageState extends State<FilterPage> {
                       }
                     },
                     child: Row(
-                      children: const [
-                        Text(AppStrings.filter),
-                        SizedBox(width: AppSize.s5),
-                        Icon(Icons.menu),
+                      children:  [
+                        Text(AppStrings.filter.tr()),
+                        const SizedBox(width: AppSize.s5),
+                        const Icon(Icons.menu),
                       ],
                     ),
                   ),
@@ -59,7 +60,7 @@ class _FilterPageState extends State<FilterPage> {
               if (widget.title.text.isEmpty) ...[
                 Center(
                   child: Text(
-                    AppStrings.enterHotelName,
+                    AppStrings.enterHotelName.tr(),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
@@ -67,7 +68,7 @@ class _FilterPageState extends State<FilterPage> {
                 if (state is SearchLoading) ...[
                   Center(
                     child: Text(
-                      AppStrings.loading,
+                      AppStrings.loading.tr(),
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
@@ -75,10 +76,9 @@ class _FilterPageState extends State<FilterPage> {
                   if (hotelsEntity != null) ...[
                     ListView.separated(
                       shrinkWrap: true,
-                      
                       itemCount:
                           hotelsEntity.getAllHotelsData.getHotelData.length,
-                      physics: const NeverScrollableScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       itemBuilder: (ctx, i) {
                         return SearchItemBuilder(
                           hotelsDataEntity:
@@ -90,14 +90,14 @@ class _FilterPageState extends State<FilterPage> {
                       },
                     ),
                   ] else ...[
-                    const Center(
-                      child: Text(AppStrings.loading),
+                     Center(
+                      child: Text(AppStrings.loading.tr()),
                     ),
                   ]
                 ] else if (state is SearchFailure) ...[
                   Center(
                     child: Text(
-                      AppStrings.somethingWrong,
+                      AppStrings.somethingWrong.tr(),
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
@@ -105,7 +105,7 @@ class _FilterPageState extends State<FilterPage> {
               ] else ...[
                 Center(
                   child: Text(
-                    AppStrings.enterHotelName,
+                    AppStrings.enterHotelName.tr(),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),

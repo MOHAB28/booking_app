@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:phase3/core/resources/values_manager.dart';
+import '../../../../booking/presentation/pages/hotel_details.dart';
 import '../../../domain/entities/get_hotels_entities.dart';
 import '../widgets/common_card.dart';
 import '../widgets/list_cell_animation_view.dart';
@@ -28,6 +30,7 @@ class HotelListViewPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
         child: CommonCard(
+
           child: ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(15)),
             child: AspectRatio(
@@ -119,6 +122,14 @@ class HotelListViewPage extends StatelessWidget {
                       splashColor:
                           Theme.of(context).primaryColor.withOpacity(0.1),
                       onTap: () {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => HotelDetailsPage(
+                              hotelsDataEntity: hotelData,
+                            )
+                          ),
+                        );
                         callback();
                       },
                     ),

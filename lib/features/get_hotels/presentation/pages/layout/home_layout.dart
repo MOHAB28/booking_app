@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../../../core/resources/strings_manager.dart';
 import '../../../../profile/presentation/cubit/profile/profile_cubit.dart';
 import '../../../../profile/presentation/pages/profile_test_page.dart';
 import '../../cubit/get_hotels_cubit.dart';
@@ -47,20 +49,21 @@ class _HomeLayoutState extends State<HomeLayout> with TickerProviderStateMixin {
             currentIndex = index;
           });
         },
-        items: const [
+        items:  [
           BottomNavigationBarItem(
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               size: 25,
             ),
-            label: 'Explore',
+            label: AppStrings.explore.tr(),
           ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: 25,
-              ),
-              label: 'Profile'),
+            icon: const Icon(
+              Icons.person,
+              size: 25,
+            ),
+            label: AppStrings.profile.tr(),
+          ),
         ],
       ),
     );

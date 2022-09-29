@@ -5,6 +5,7 @@ import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../booking/presentation/pages/hotel_details.dart';
 import '../../../get_hotels/domain/entities/get_hotels_entities.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SearchItemBuilder extends StatelessWidget {
   const SearchItemBuilder({
@@ -41,10 +42,10 @@ class SearchItemBuilder extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   )
-                : const SizedBox(
+                : SizedBox(
                     height: AppSize.s150,
                     child: Center(
-                      child: Text(AppStrings.noImage),
+                      child: Text(AppStrings.noImage.tr()),
                     ),
                   ),
             Padding(
@@ -58,9 +59,14 @@ class SearchItemBuilder extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        hotelsDataEntity.name,
-                        style: Theme.of(context).textTheme.titleLarge,
+                      SizedBox(
+                        width: AppSize.s250,
+                        child: Text(
+                          hotelsDataEntity.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                       ),
                       const SizedBox(height: AppSize.s4),
                       TextWithIcon(
@@ -83,7 +89,7 @@ class SearchItemBuilder extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSize.s4),
                       Text(
-                        AppStrings.perNight,
+                        AppStrings.perNight.tr(),
                         style: Theme.of(context).textTheme.displaySmall,
                       ),
                     ],
@@ -110,6 +116,7 @@ class TextWithIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Icon(
           icon,
@@ -121,7 +128,7 @@ class TextWithIcon extends StatelessWidget {
           width: AppSize.s150,
           child: Text(
             text,
-            maxLines: 1,
+            maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.displaySmall,
           ),
