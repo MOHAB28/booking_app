@@ -128,7 +128,7 @@ class TextWithIcon extends StatelessWidget {
           width: AppSize.s150,
           child: Text(
             text,
-            maxLines: 3,
+            maxLines: 4,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.displaySmall,
           ),

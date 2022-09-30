@@ -29,11 +29,15 @@ class _HotelDetailsPageState extends State<HotelDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: AppSize.s0,
+      ),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
           SliverPersistentHeader(
             pinned: true,
+            floating: true,
             delegate: Delegate(
               context,
               widget.hotelsDataEntity,
