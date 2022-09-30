@@ -59,4 +59,5 @@ class AppStrings {
   static const String grandHotel = 'grand_hotel';
   static const String wembleyLondon = 'wembley_london';
   static const String moreDetails = 'more_details';
+  static const String popularDistination = 'popular_distination';
 }

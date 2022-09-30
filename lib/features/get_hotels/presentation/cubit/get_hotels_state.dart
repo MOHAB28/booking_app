@@ -17,3 +17,11 @@ class GethotelsLoaded extends GetHotelsState {
 }
 
 class GethotelsFaiulre extends GetHotelsState {}
+
+class GethotelsPagLoading extends GetHotelsState {}
+
+class GethotelsPagLoaded extends GetHotelsState {}
+
+class GethotelsPagFaiulre extends GetHotelsState {}
+
+class ToggleIsEndState extends GetHotelsState {}

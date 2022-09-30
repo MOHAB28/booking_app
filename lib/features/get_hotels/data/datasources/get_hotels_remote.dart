@@ -16,7 +16,7 @@ class GetHotelsRemoteDataSourcesImpl implements GetHotelsRemoteDataSources {
       endPoint: hotelsEndPoint,
       query: {
         'page': page,
-        'count': 5,
+        'count': 3,
       },
     );
 

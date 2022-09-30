@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import '../../features/get_hotels/presentation/pages/screens/view_all_hotels_page.dart';
 import '../../features/profile/presentation/pages/profile_test_page.dart';
 import '../../features/get_hotels/presentation/pages/layout/home_layout.dart';
 import '../../features/login/presentation/pages/login_page.dart';
@@ -18,6 +19,7 @@ class Routes {
   static const String layoutPage = '/layoutPage';
   static const String searchPageKey = '/SearchPage';
   static const String editFilterPageKey = '/EditFilterPage';
+  static const String viewAllHotelsPageKey = '/ViewAllHotelsPage';
   static Map<String, WidgetBuilder> get routes {
     return {
       profileTestPage: (context) => const ProfileTestPage(),
@@ -28,6 +30,7 @@ class Routes {
       registerPageKey: (context) => const RegisterPage(),
       searchPageKey: (context) => const SearchPage(),
       editFilterPageKey: (context) => const EditFilterPage(),
+      viewAllHotelsPageKey: (context) => const ViewAllHotelsPage(),
     };
   }
 }
