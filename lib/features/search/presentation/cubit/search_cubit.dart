@@ -17,9 +17,9 @@ class SearchCubit extends Cubit<SearchState> {
 
   GetHotelsEntity? hotelsEntity;
   Future<void> search({
-    required String name,
     required int count,
     required int page,
+    String? name,
     String? address,
     dynamic maxPrice,
     dynamic minPrice,

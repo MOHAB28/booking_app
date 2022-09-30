@@ -16,9 +16,9 @@ class SearchRemoteDataSourcesImpl implements SearchRemoteDataSources {
     final response = await _dioHelper.get(
       endPoint: searchEndPoint,
       query: {
-        'name': input.name,
         'count': input.count,
         'page': input.page,
+        if (input.name != null) 'name': input.name,
         if (input.address != null) 'address': input.address,
         if (input.maxPrice != null) 'max_price': input.maxPrice,
         if (input.minPrice != null) 'min_price': input.minPrice,

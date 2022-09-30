@@ -27,9 +27,9 @@ class SearchUsecase extends BaseUseCase<SearchUsecaseInput, GetHotelsEntity> {
 }
 
 class SearchUsecaseInput {
-  final String name;
   final int count;
   final int page;
+  final String? name;
   final String? address;
   final dynamic maxPrice;
   final dynamic minPrice;
@@ -37,9 +37,9 @@ class SearchUsecaseInput {
   final double? longitude;
   final dynamic distance;
   const SearchUsecaseInput({
-    required this.name,
     required this.count,
     required this.page,
+    this.name,
     this.address,
     this.distance,
     this.latitude,

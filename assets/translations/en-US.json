@@ -57,5 +57,7 @@
     "wembley_london" : "Wembley, London",
     "more_details" : "More details",
     "popular_distination" : "Popular Destination",
-    "logout" : "Logout"
+    "logout" : "Logout",
+    "no_hotel" : "No Hotel!\nPlease search for an existed hotel",
+    "facilities" : "Facilities"
 }

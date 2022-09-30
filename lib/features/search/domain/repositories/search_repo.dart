@@ -9,9 +9,9 @@ abstract class SearchRepo {
 }
 
 class SearchInput {
-  final String name;
   final int count;
   final int page;
+  final String? name;
   final String? address;
   final dynamic maxPrice;
   final dynamic minPrice;
@@ -19,9 +19,9 @@ class SearchInput {
   final double? longitude;
   final dynamic distance;
   const SearchInput({
-    required this.name,
     required this.count,
     required this.page,
+    this.name,
     this.address,
     this.distance,
     this.latitude,

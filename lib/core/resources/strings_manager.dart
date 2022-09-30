@@ -61,4 +61,6 @@ class AppStrings {
   static const String moreDetails = 'more_details';
   static const String popularDistination = 'popular_distination';
   static const String logout = 'logout';
+  static const String noHotel = 'no_hotel';
+  static const String facilities = 'facilities';
 }
