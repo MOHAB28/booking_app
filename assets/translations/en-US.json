@@ -56,5 +56,6 @@
     "grand_hotel" : "Grand Royal Hotel",
     "wembley_london" : "Wembley, London",
     "more_details" : "More details",
-    "popular_distination" : "Popular Destination"
+    "popular_distination" : "Popular Destination",
+    "logout" : "Logout"
 }

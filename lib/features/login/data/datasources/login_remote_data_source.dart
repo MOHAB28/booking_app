@@ -4,7 +4,7 @@ import '../../domain/repositories/login_repo.dart';
 import '../models/login_model.dart';
 
 abstract class LoginRemoteDataSources {
-  Future<LoginModel> login(LoginInput input);
+  Future<AuthModel> login(LoginInput input);
 }
 
 class LoginRemoteDataSourcesImpl implements LoginRemoteDataSources {
@@ -12,7 +12,7 @@ class LoginRemoteDataSourcesImpl implements LoginRemoteDataSources {
   LoginRemoteDataSourcesImpl(this._dioHelper);
 
   @override
-  Future<LoginModel> login(LoginInput input) async {
+  Future<AuthModel> login(LoginInput input) async {
     final response = await _dioHelper.post(
       endPoint: loginEndPoint,
       data: {
@@ -21,6 +21,6 @@ class LoginRemoteDataSourcesImpl implements LoginRemoteDataSources {
       },
     );
 
-    return LoginModel.fromJson(response);
+    return AuthModel.fromJson(response);
   }
 }

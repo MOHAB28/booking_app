@@ -5,11 +5,11 @@ import '../../../../core/usecase/usecase.dart';
 import '../entities/login_entity.dart';
 import '../repositories/login_repo.dart';
 
-class LoginUsecase extends BaseUseCase<LoginUsecaseInput, LoginEntity> {
+class LoginUsecase extends BaseUseCase<LoginUsecaseInput, AuthEntity> {
   final LoginRepo _repo;
   LoginUsecase(this._repo);
   @override
-  Future<Either<PrimaryServerException, LoginEntity>> call(
+  Future<Either<PrimaryServerException, AuthEntity>> call(
       LoginUsecaseInput input) {
     return _repo.login(
       LoginInput(

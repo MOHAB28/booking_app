@@ -1,8 +1,8 @@
 import '../../domain/entities/login_entity.dart';
 
-class LoginModel extends LoginEntity {
-  final LoginDataModel? loginDataModel;
-  LoginModel({
+class AuthModel extends AuthEntity {
+  final AuthDataModel? loginDataModel;
+  AuthModel({
     String? status,
     String? titleAr,
     String? titleEn,
@@ -11,16 +11,16 @@ class LoginModel extends LoginEntity {
           status: status!,
           titleAr: titleAr!,
           titleEn: titleEn!,
-          loginDataEntity: loginDataModel!,
+          authDataEntity: loginDataModel!,
         );
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) {
-    return LoginModel(
+  factory AuthModel.fromJson(Map<String, dynamic> json) {
+    return AuthModel(
       status: json['status']['type'],
       titleAr: json['status']['title']['ar'],
       titleEn: json['status']['title']['en'],
       loginDataModel:
-          json['data'] != null ? LoginDataModel.fromJson(json['data']) : null,
+          json['data'] != null ? AuthDataModel.fromJson(json['data']) : null,
     );
   }
 
@@ -39,8 +39,8 @@ class LoginModel extends LoginEntity {
   }
 }
 
-class LoginDataModel extends LoginDataEntity {
-  LoginDataModel({
+class AuthDataModel extends AuthDataEntity {
+  AuthDataModel({
     int? id,
     String? name,
     String? email,
@@ -64,8 +64,8 @@ class LoginDataModel extends LoginDataEntity {
           provider: provider,
         );
 
-  factory LoginDataModel.fromJson(Map<String, dynamic> json) {
-    return LoginDataModel(
+  factory AuthDataModel.fromJson(Map<String, dynamic> json) {
+    return AuthDataModel(
       id: json['id'],
       name: json['name'],
       email: json['email'],

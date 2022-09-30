@@ -10,7 +10,7 @@ class LoginRepoImpl implements LoginRepo {
   final LoginRemoteDataSources _remoteDataSources;
   LoginRepoImpl(this._networkInfo, this._remoteDataSources);
   @override
-  Future<Either<PrimaryServerException, LoginEntity>> login(
+  Future<Either<PrimaryServerException, AuthEntity>> login(
     LoginInput input
   ) async {
     if (await _networkInfo.isConnected) {

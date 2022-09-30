@@ -1,7 +1,6 @@
-
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/register_entity.dart';
+import '../../../login/domain/entities/login_entity.dart';
 
 abstract class RegisterState extends Equatable {
   const RegisterState();
@@ -17,7 +16,7 @@ class RegisterInit extends RegisterState {}
 class RegisterLoading extends RegisterState {}
 
 class RegisterSuccess extends RegisterState {
-  final RegisterEntity data;
+  final AuthEntity data;
   const RegisterSuccess({required this.data});
 }
 

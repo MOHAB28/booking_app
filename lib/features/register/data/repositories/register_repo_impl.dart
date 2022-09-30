@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/network/network_info.dart';
-import '../../domain/entities/register_entity.dart';
+import '../../../login/domain/entities/login_entity.dart';
 import '../../domain/repositories/register_repo.dart';
 import '../datasources/register_remote_data_source.dart';
 
@@ -11,7 +11,7 @@ class RegisterRepoImpl implements RegisterRepo {
   final RegisterRemoteDataSources _remoteDataSources;
   RegisterRepoImpl(this._networkInfo, this._remoteDataSources);
   @override
-  Future<Either<PrimaryServerException, RegisterEntity>> register(
+  Future<Either<PrimaryServerException, AuthEntity>> register(
     RegisterInput input
   ) async {
     if (await _networkInfo.isConnected) {

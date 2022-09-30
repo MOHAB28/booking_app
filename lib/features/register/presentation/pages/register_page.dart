@@ -40,7 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
         listener: (context, state) {
           if (state is RegisterSuccess) {
             sl<SharedPreferences>()
-                .setString(isLoggedIn, state.data.registerDataEntity.token)
+                .setString(isLoggedIn, state.data.authDataEntity.token)
                 .then(
               (value) {
                 if (value) {

@@ -1,11 +1,11 @@
 import '../../../../core/network/dio_helper.dart';
 import '../../../../core/network/end_points.dart';
+import '../../../login/data/models/login_model.dart';
 import '../../domain/repositories/register_repo.dart';
-import '../models/register_model.dart';
 
 
 abstract class RegisterRemoteDataSources {
-  Future<RegisterModel> register(RegisterInput input);
+  Future<AuthModel> register(RegisterInput input);
 }
 
 class RegisterRemoteDataSourcesImpl implements RegisterRemoteDataSources {
@@ -13,7 +13,7 @@ class RegisterRemoteDataSourcesImpl implements RegisterRemoteDataSources {
   RegisterRemoteDataSourcesImpl(this._dioHelper);
 
   @override
-  Future<RegisterModel> register(RegisterInput input) async {
+  Future<AuthModel> register(RegisterInput input) async {
     final response = await _dioHelper.post(
       endPoint: registerEndPoint,
       data: {
@@ -24,6 +24,6 @@ class RegisterRemoteDataSourcesImpl implements RegisterRemoteDataSources {
       },
     );
 
-    return RegisterModel.fromJson(response);
+    return AuthModel.fromJson(response);
   }
 }

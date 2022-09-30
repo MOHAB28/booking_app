@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../core/usecase/usecase.dart';
 import '../../../../../injection_container.dart';
+import '../../../../../main.dart';
+import '../../../../login/presentation/pages/login_page.dart';
 import '../../../domain/entities/profile_entity.dart';
 import '../../../domain/usecases/get_profile_use_case.dart';
 import '../../../domain/usecases/update_profile_use_case.dart';
@@ -83,6 +85,11 @@ class ProfileCubit extends Cubit<ProfileState> {
       });
       emit(AppThemeModeAgState());
     }
+  }
+
+  Future<void> logout() async {
+    token = '';
+    await sl<SharedPreferences>().remove(isLoggedIn);
   }
 }
 
