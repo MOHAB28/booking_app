@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../core/resources/routes.dart';
 import '../../../../../core/resources/strings_manager.dart';
 import '../../../../../core/resources/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -88,7 +89,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                       );
                       if (index == 0) {
                         return TitleView(
-                          titleTxt: ('Popular Destination'),
+                          titleTxt: (AppStrings.popularDistination.tr()),
                           subTxt: '',
                           animation: animation,
                           animationController: widget.animationController,
@@ -112,7 +113,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                           animation: animation,
                           isLeftButton: true,
                           animationController: widget.animationController,
-                          click: () {},
+                          click: () => Navigator.pushNamed(context, Routes.viewAllHotelsPageKey),
                         );
                       } else {
                         // BEST DEAL SECTION
