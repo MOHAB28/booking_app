@@ -34,20 +34,16 @@ class _FilterPageState extends State<FilterPage> {
                 children: [
                   TextButton(
                     onPressed: () {
-                      if (widget.title.text.isEmpty) {
-                        FlushbarHelper.createError(
-                          message: AppStrings.enterHotelName.tr(),
-                        ).show(context);
-                      } else {
-                        Navigator.pushNamed(
-                          context,
-                          Routes.editFilterPageKey,
-                          arguments: widget.title.text,
-                        );
-                      }
+                      Navigator.pushNamed(
+                        context,
+                        Routes.editFilterPageKey,
+                        arguments: widget.title.text.isEmpty
+                            ? null
+                            : widget.title.text,
+                      );
                     },
                     child: Row(
-                      children:  [
+                      children: [
                         Text(AppStrings.filter.tr()),
                         const SizedBox(width: AppSize.s5),
                         const Icon(Icons.menu),
@@ -74,23 +70,34 @@ class _FilterPageState extends State<FilterPage> {
                   ),
                 ] else if (state is SearchLoaded) ...[
                   if (hotelsEntity != null) ...[
-                    ListView.separated(
-                      shrinkWrap: true,
-                      itemCount:
-                          hotelsEntity.getAllHotelsData.getHotelData.length,
-                      physics: const BouncingScrollPhysics(),
-                      itemBuilder: (ctx, i) {
-                        return SearchItemBuilder(
-                          hotelsDataEntity:
-                              hotelsEntity.getAllHotelsData.getHotelData[i],
-                        );
-                      },
-                      separatorBuilder: (_, __) {
-                        return const SizedBox(height: AppSize.s15);
-                      },
-                    ),
+                    if (hotelsEntity
+                        .getAllHotelsData.getHotelData.isNotEmpty) ...[
+                      ListView.separated(
+                        shrinkWrap: true,
+                        itemCount:
+                            hotelsEntity.getAllHotelsData.getHotelData.length,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (ctx, i) {
+                          return SearchItemBuilder(
+                            hotelsDataEntity:
+                                hotelsEntity.getAllHotelsData.getHotelData[i],
+                          );
+                        },
+                        separatorBuilder: (_, __) {
+                          return const SizedBox(height: AppSize.s15);
+                        },
+                      ),
+                    ] else if (hotelsEntity
+                        .getAllHotelsData.getHotelData.isEmpty) ...[
+                      Center(
+                        child: Text(
+                          AppStrings.noHotel.tr(),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ]
                   ] else ...[
-                     Center(
+                    Center(
                       child: Text(AppStrings.loading.tr()),
                     ),
                   ]

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/resources/routes.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/utils/loading_indicator.dart';
 import '../widgets/change_language.dart';
@@ -11,7 +12,6 @@ import '../cubit/profile/profile_cubit.dart';
 import '../widgets/photo_and_profile.dart';
 import 'update_profile.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 
 class ProfileTestPage extends StatelessWidget {
   const ProfileTestPage({super.key});
@@ -52,12 +52,12 @@ class ProfileTestPage extends StatelessWidget {
                     ),
                   ),
                   // change language
-                   ColumnItem(
+                  ColumnItem(
                     itemText: AppStrings.changeLanguage.tr(),
-                    itemWidget:  ChangeLanguage(context: context),
+                    itemWidget: ChangeLanguage(context: context),
                   ),
                   // Contact us
-                   ColumnItem(
+                  ColumnItem(
                     itemText: AppStrings.contactUs.tr(),
                     itemWidget: const ContactUs(),
                   ),
@@ -71,6 +71,20 @@ class ProfileTestPage extends StatelessWidget {
                       icon: isDark
                           ? const Icon(Icons.light_mode)
                           : const Icon(Icons.dark_mode),
+                    ),
+                  ),
+                  ColumnItem(
+                    itemText: AppStrings.logout.tr(),
+                    itemWidget: IconButton(
+                      onPressed: () {
+                        cubit.logout().whenComplete(
+                              () => Navigator.pushReplacementNamed(
+                                context,
+                                Routes.loginPageKey,
+                              ),
+                            );
+                      },
+                      icon: const Icon(Icons.logout),
                     ),
                   ),
                 ],

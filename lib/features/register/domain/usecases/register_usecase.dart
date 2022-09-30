@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../entities/register_entity.dart';
+import '../../../login/domain/entities/login_entity.dart';
 import '../repositories/register_repo.dart';
 
-class RegisterUsecase extends BaseUseCase<RegisterUsecaseInput, RegisterEntity> {
+class RegisterUsecase extends BaseUseCase<RegisterUsecaseInput, AuthEntity> {
   final RegisterRepo _repo;
   RegisterUsecase(this._repo);
   @override
-  Future<Either<PrimaryServerException, RegisterEntity>> call(
+  Future<Either<PrimaryServerException, AuthEntity>> call(
       RegisterUsecaseInput input) {
     return _repo.register(
       RegisterInput(

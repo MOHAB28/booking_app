@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/resources/exctensions.dart';
 import '../../../../core/resources/strings_manager.dart';
-import '../../domain/entities/register_entity.dart';
+import '../../../login/domain/entities/login_entity.dart';
 import '../../domain/usecases/register_usecase.dart';
 import 'register_state.dart';
 
@@ -96,7 +96,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(state);
   }
 
-  RegisterEntity? registerEntity;
+  AuthEntity? authEntity;
   Future<void> register(RegisterInputCubit input) async {
     emit(RegisterLoading());
     final successOrFailure = await _usecase(

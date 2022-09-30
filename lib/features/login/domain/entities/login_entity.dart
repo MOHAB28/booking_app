@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
-class LoginEntity extends Equatable {
+class AuthEntity extends Equatable {
   final String status;
   final String titleAr;
   final String titleEn;
-  final LoginDataEntity loginDataEntity;
+  final AuthDataEntity authDataEntity;
 
-  const LoginEntity({
-    required this.loginDataEntity,
+  const AuthEntity({
+    required this.authDataEntity,
     required this.status,
     required this.titleAr,
     required this.titleEn,
@@ -15,14 +15,14 @@ class LoginEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-        loginDataEntity,
+        authDataEntity,
         status,
         titleAr,
         titleEn,
       ];
 }
 
-class LoginDataEntity extends Equatable {
+class AuthDataEntity extends Equatable {
   final int id;
   final String name;
   final String email;
@@ -34,7 +34,7 @@ class LoginDataEntity extends Equatable {
   final dynamic googleId;
   final dynamic provider;
 
-  const LoginDataEntity({
+  const AuthDataEntity({
     required this.createdAt,
     required this.email,
     required this.emailVetfAt,

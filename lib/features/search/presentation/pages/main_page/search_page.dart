@@ -64,7 +64,7 @@ class _SearchPageState extends State<SearchPage> {
                           ).show(context);
                         } else {
                           SearchCubit.get(context, listen: false).search(
-                            name: _searchController.text.trim(),
+                            name: _searchController.text.trim().isEmpty ? null : _searchController.text,
                             page: 1,
                             count: 5,
                           );

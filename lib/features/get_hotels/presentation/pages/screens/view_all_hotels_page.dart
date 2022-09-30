@@ -64,8 +64,12 @@ class _ViewAllHotelsPageState extends State<ViewAllHotelsPage> {
                       ),
                     ],
                     if (cubit.hotels.isEmpty) ...[
-                      const Center(
-                        child: CircularProgressIndicator(),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                       ),
                     ],
                     if (GetHotelsCubit.get(context).isEnd) ...[

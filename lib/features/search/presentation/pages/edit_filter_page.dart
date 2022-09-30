@@ -21,7 +21,7 @@ class _EditFilterPageState extends State<EditFilterPage> {
   final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final name = ModalRoute.of(context)!.settings.arguments as String;
+    String? name = ModalRoute.of(context)!.settings.arguments as String?;
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(

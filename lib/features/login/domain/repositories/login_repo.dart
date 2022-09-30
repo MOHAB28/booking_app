@@ -3,7 +3,7 @@ import '../../../../core/error/exception.dart';
 import '../entities/login_entity.dart';
 
 abstract class LoginRepo {
-  Future<Either<PrimaryServerException,LoginEntity>> login(LoginInput input);
+  Future<Either<PrimaryServerException,AuthEntity>> login(LoginInput input);
 }
 
 class LoginInput {

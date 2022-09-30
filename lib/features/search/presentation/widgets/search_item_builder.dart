@@ -56,43 +56,48 @@ class SearchItemBuilder extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: AppSize.s250,
-                        child: Text(
-                          hotelsDataEntity.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                  Expanded(
+                    flex:  3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: AppSize.s250,
+                          child: Text(
+                            hotelsDataEntity.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ),
+                        const SizedBox(height: AppSize.s4),
+                        TextWithIcon(
+                          icon: Icons.location_on,
+                          text: hotelsDataEntity.address,
+                        ),
+                        const SizedBox(height: AppSize.s4),
+                        TextWithIcon(
+                          icon: Icons.star,
+                          text: hotelsDataEntity.rate,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '\$${hotelsDataEntity.price}',
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
-                      ),
-                      const SizedBox(height: AppSize.s4),
-                      TextWithIcon(
-                        icon: Icons.location_on,
-                        text: hotelsDataEntity.address,
-                      ),
-                      const SizedBox(height: AppSize.s4),
-                      TextWithIcon(
-                        icon: Icons.star,
-                        text: hotelsDataEntity.rate,
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        '\$${hotelsDataEntity.price}',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: AppSize.s4),
-                      Text(
-                        AppStrings.perNight.tr(),
-                        style: Theme.of(context).textTheme.displaySmall,
-                      ),
-                    ],
+                        const SizedBox(height: AppSize.s4),
+                        Text(
+                          AppStrings.perNight.tr(),
+                          style: Theme.of(context).textTheme.displaySmall,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

@@ -56,5 +56,8 @@
     "grand_hotel" : "جراند رويال هوتيل",
     "wembley_london" : "ويمبلي , لندن",
     "more_details" : "لتفاصيل اكثر",
-    "popular_distination" : "الوجهات المشهوره"
+    "popular_distination" : "الوجهات المشهوره",
+    "logout" : "تسجيل الخروج",
+    "no_hotel" : "لا يوجد فندق\nمن فضلك ابحث عن فندق موجود",
+    "facilities" : "مرافق"
 }

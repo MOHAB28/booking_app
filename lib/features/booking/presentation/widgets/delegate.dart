@@ -1,11 +1,15 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phase3/features/login/presentation/widgets/custom_button_builder.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../get_hotels/domain/entities/get_hotels_entities.dart';
+import '../cubit/booking_cubit.dart';
+import 'custom_sliver_padding.dart';
 
 class Delegate extends SliverPersistentHeaderDelegate {
   final BuildContext builldContext;
@@ -97,7 +101,8 @@ class Delegate extends SliverPersistentHeaderDelegate {
                                   ),
                                   const SizedBox(height: AppSize.s4),
                                   Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Icon(
                                         Icons.location_on,
@@ -120,7 +125,8 @@ class Delegate extends SliverPersistentHeaderDelegate {
                                   ),
                                   const SizedBox(height: AppSize.s4),
                                   Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Icon(
                                         Icons.star,
@@ -159,8 +165,9 @@ class Delegate extends SliverPersistentHeaderDelegate {
                                   const SizedBox(height: AppSize.s4),
                                   Text(
                                     AppStrings.perNight.tr(),
-                                    style:
-                                        Theme.of(context).textTheme.headlineSmall,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall,
                                   ),
                                 ],
                               ),
@@ -168,9 +175,25 @@ class Delegate extends SliverPersistentHeaderDelegate {
                           ],
                         ),
                         const SizedBox(height: AppSize.s15),
-                        CustomButtonBuilder(
-                          title: AppStrings.bookNow.tr(),
-                          onTap: () {},
+                        BlocConsumer<BookingCubit, BookingState>(
+                          listener: (context, state) {
+                            if (state is CreateBookingLoaded) {
+                              FlushbarHelper.createSuccess(
+                                message: state.createBookingEntity.titleEn,
+                              ).show(context);
+                            }
+                          },
+                          builder: (context, state) {
+                            return state is CreateBookingLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : CustomButtonBuilder(
+                                    onTap: () => BookingCubit.get(context)
+                                        .createBooking(hotelsDataEntity.id),
+                                    title: AppStrings.bookNow.tr(),
+                                  );
+                          },
                         ),
                       ],
                     ),
