@@ -60,5 +60,6 @@
     "logout" : "Logout",
     "no_hotel" : "No Hotel!\nPlease search for an existed hotel",
     "facilities" : "Facilities",
-    "view_hotels" : "View Hotels"
+    "view_hotels" : "View Hotels",
+    "confirm_pass_error" : "the password should be matched"
 }

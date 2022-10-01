@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +40,7 @@ class LoginCubit extends Cubit<LoginState> {
     bool isValid = true;
     if (emailController.text.trim().isEmpty ||
         !emailController.text.trim().isEmailValid()) {
-      errorEmail = AppStrings.enterAValidEm;
+      errorEmail = AppStrings.enterAValidEm.tr();
       isValid = false;
     } else {
       errorEmail = '';
@@ -47,7 +48,7 @@ class LoginCubit extends Cubit<LoginState> {
 
     if (passwordController.text.trim().length < 6 ||
         passwordController.text.trim().isEmpty) {
-      errorPassword = AppStrings.enterValidPass;
+      errorPassword = AppStrings.enterValidPass.tr();
       isValid = false;
     } else {
       errorPassword = '';
