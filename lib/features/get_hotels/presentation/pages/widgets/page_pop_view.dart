@@ -22,39 +22,6 @@ class PagePopup extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        Positioned(
-            bottom: 80,
-            left: 24,
-            right: 24,
-            child: Opacity(
-              opacity: opValue,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  SizedBox(
-                    child: Text(
-                      'New Hotels',
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  SizedBox(
-                    child: Text(
-                      'Enjoy Your Life',
-                      style: TextStyle(fontSize: 20, color: Colors.grey),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                ],
-              ),
-            ))
       ],
     );
   }

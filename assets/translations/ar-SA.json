@@ -59,5 +59,6 @@
     "popular_distination" : "الوجهات المشهوره",
     "logout" : "تسجيل الخروج",
     "no_hotel" : "لا يوجد فندق\nمن فضلك ابحث عن فندق موجود",
-    "facilities" : "مرافق"
+    "facilities" : "مرافق",
+    "view_hotels" : "اعرض الفنادق"
 }

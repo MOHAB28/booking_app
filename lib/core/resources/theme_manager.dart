@@ -24,6 +24,12 @@ ThemeData getApplicationLighTheme() {
         // color: ColorManager.black,
       ),
     ),
+
+    sliderTheme: const SliderThemeData(
+      valueIndicatorTextStyle: TextStyle(
+        color: Colors.white,
+      ),
+    ),
     primarySwatch: ColorManager.mGreen,
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: Colors.white,
@@ -182,6 +188,12 @@ ThemeData getApplicationDarkTheme() {
       style: TextButton.styleFrom(
         foregroundColor: Colors.white,
         textStyle: getRegularStyle(color: Colors.white, fontSize: FontSize.s18),
+      ),
+    ),
+
+    sliderTheme: const SliderThemeData(
+      valueIndicatorTextStyle: TextStyle(
+        color: Colors.white,
       ),
     ),
 

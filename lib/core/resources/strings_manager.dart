@@ -63,4 +63,5 @@ class AppStrings {
   static const String logout = 'logout';
   static const String noHotel = 'no_hotel';
   static const String facilities = 'facilities';
+  static const String viewHotels = 'view_hotels';
 }

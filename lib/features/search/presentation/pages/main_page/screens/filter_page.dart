@@ -52,70 +52,79 @@ class _FilterPageState extends State<FilterPage> {
                 ],
               ),
               const SizedBox(height: AppSize.s10),
-              if (widget.title.text.isEmpty) ...[
+              if (state is SearchLoading) ...[
                 Center(
                   child: Text(
-                    AppStrings.enterHotelName.tr(),
+                    AppStrings.loading.tr(),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
-              ] else if (widget.title.text.isNotEmpty) ...[
-                if (state is SearchLoading) ...[
-                  Center(
-                    child: Text(
-                      AppStrings.loading.tr(),
-                      style: Theme.of(context).textTheme.bodySmall,
+              ] else if (state is SearchLoaded) ...[
+                if (hotelsEntity != null) ...[
+                  if (hotelsEntity
+                      .getAllHotelsData.getHotelData.isNotEmpty) ...[
+                    ListView.separated(
+                      shrinkWrap: true,
+                      itemCount:
+                          hotelsEntity.getAllHotelsData.getHotelData.length,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (ctx, i) {
+                        return SearchItemBuilder(
+                          hotelsDataEntity:
+                              hotelsEntity.getAllHotelsData.getHotelData[i],
+                        );
+                      },
+                      separatorBuilder: (_, __) {
+                        return const SizedBox(height: AppSize.s15);
+                      },
                     ),
-                  ),
-                ] else if (state is SearchLoaded) ...[
-                  if (hotelsEntity != null) ...[
-                    if (hotelsEntity
-                        .getAllHotelsData.getHotelData.isNotEmpty) ...[
-                      ListView.separated(
-                        shrinkWrap: true,
-                        itemCount:
-                            hotelsEntity.getAllHotelsData.getHotelData.length,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (ctx, i) {
-                          return SearchItemBuilder(
-                            hotelsDataEntity:
-                                hotelsEntity.getAllHotelsData.getHotelData[i],
-                          );
-                        },
-                        separatorBuilder: (_, __) {
-                          return const SizedBox(height: AppSize.s15);
-                        },
-                      ),
-                    ] else if (hotelsEntity
-                        .getAllHotelsData.getHotelData.isEmpty) ...[
-                      Center(
-                        child: Text(
-                          AppStrings.noHotel.tr(),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ]
-                  ] else ...[
+                  ] else if (hotelsEntity
+                      .getAllHotelsData.getHotelData.isEmpty) ...[
                     Center(
-                      child: Text(AppStrings.loading.tr()),
+                      child: Text(
+                        AppStrings.noHotel.tr(),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ]
-                ] else if (state is SearchFailure) ...[
+                ] else ...[
                   Center(
-                    child: Text(
-                      AppStrings.somethingWrong.tr(),
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
+                    child: Text(AppStrings.loading.tr()),
                   ),
-                ]
-              ] else ...[
+                ],
+              ] else if (state is SearchFailure) ...[
                 Center(
                   child: Text(
-                    AppStrings.enterHotelName.tr(),
+                    AppStrings.somethingWrong.tr(),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
               ]
+              // if (widget.title.text.isEmpty) ...[
+              //   Center(
+              //     child: Text(
+              //       AppStrings.enterHotelName.tr(),
+              //       style: Theme.of(context).textTheme.bodySmall,
+              //     ),
+              //   ),
+              // ] else if (widget.title.text.isNotEmpty) ...[
+
+              //   ] else if (state is SearchFailure) ...[
+              //     Center(
+              //       child: Text(
+              //         AppStrings.somethingWrong.tr(),
+              //         style: Theme.of(context).textTheme.bodySmall,
+              //       ),
+              //     ),
+              //   ]
+              // ] else ...[
+              //   Center(
+              //     child: Text(
+              //       AppStrings.enterHotelName.tr(),
+              //       style: Theme.of(context).textTheme.bodySmall,
+              //     ),
+              //   ),
+              // ]
             ],
           ),
         );
