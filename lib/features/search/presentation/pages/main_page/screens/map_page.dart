@@ -1,11 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../../../../../get_hotels/presentation/pages/widgets/common_card.dart';
 import '../../../../../get_hotels/presentation/pages/widgets/hotel_item_builder.dart';
 import '../../../cubit/search_cubit.dart';
 

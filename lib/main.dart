@@ -5,6 +5,7 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc_obsorver.dart';
 import 'core/resources/language_manager.dart';
+import 'features/facilities/presentation/cubit/facilities_cubit.dart';
 import 'features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'features/login/presentation/pages/login_page.dart';
 import 'features/booking/presentation/cubit/booking_cubit.dart';
@@ -82,6 +83,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (context) => sl<RegisterCubit>()),
         BlocProvider(create: (context) => sl<BookingCubit>()),
         BlocProvider(create: (context) => sl<SearchCubit>()),
+        BlocProvider(create: (context) => sl<FacilitiesCubit>()..getFacilities()),
         BlocProvider(
             create: (context) =>
                 sl<ProfileCubit>()..changeThemeMode(widget.isDark)),

@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:phase3/core/resources/values_manager.dart';
 import '../../../../booking/presentation/pages/hotel_details.dart';
 import '../../../domain/entities/get_hotels_entities.dart';
-import '../widgets/common_card.dart';
 import '../widgets/hotel_item_builder.dart';
 import '../widgets/list_cell_animation_view.dart';
 

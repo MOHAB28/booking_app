@@ -122,15 +122,15 @@ extension on DioHelper {
       debugPrint('Response_Data => ${r.data}');
       debugPrint('Response_Code => ${r.statusCode}');
 
-      if (r.data['status']['type'] == '0') {
-        dynamic title = r.data['status']['title'];
+      // if (r.data['status']['type'] == '0') {
+      //   dynamic title = r.data['status']['title'];
 
-        throw PrimaryServerException(
-          message: title is String ? title : r.data['status']['title']['ar'],
-          code: r.statusCode ?? 500,
-          error: title is String ? title : r.data['status']['title']['en'],
-        );
-      }
+      //   throw PrimaryServerException(
+      //     message: title is String ? title : r.data['status']['title']['ar'],
+      //     code: r.statusCode ?? 500,
+      //     error: title is String ? title : r.data['status']['title']['en'],
+      //   );
+      // }
 
       return r.data;
     } on DioError catch (e) {

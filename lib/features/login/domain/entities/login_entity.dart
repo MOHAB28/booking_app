@@ -4,7 +4,7 @@ class AuthEntity extends Equatable {
   final String status;
   final String titleAr;
   final String titleEn;
-  final AuthDataEntity authDataEntity;
+  final dynamic authDataEntity;
 
   const AuthEntity({
     required this.authDataEntity,

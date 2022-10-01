@@ -1,7 +1,7 @@
 import '../../domain/entities/login_entity.dart';
 
 class AuthModel extends AuthEntity {
-  final AuthDataModel? loginDataModel;
+  final dynamic loginDataModel;
   AuthModel({
     String? status,
     String? titleAr,
@@ -11,7 +11,7 @@ class AuthModel extends AuthEntity {
           status: status!,
           titleAr: titleAr!,
           titleEn: titleEn!,
-          authDataEntity: loginDataModel!,
+          authDataEntity: loginDataModel,
         );
 
   factory AuthModel.fromJson(Map<String, dynamic> json) {

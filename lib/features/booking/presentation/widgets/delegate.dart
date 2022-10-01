@@ -9,7 +9,6 @@ import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../get_hotels/domain/entities/get_hotels_entities.dart';
 import '../cubit/booking_cubit.dart';
-import 'custom_sliver_padding.dart';
 
 class Delegate extends SliverPersistentHeaderDelegate {
   final BuildContext builldContext;
