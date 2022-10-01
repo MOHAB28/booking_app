@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/resources/color_manager.dart';
@@ -89,14 +90,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     const SizedBox(height: AppSize.s20),
                     CustomButtonBuilder(
                       color: ColorManager.bGreen,
-                      title: AppStrings.login,
+                      title: AppStrings.login.tr(),
                       onTap: () =>
                           Navigator.pushNamed(context, Routes.loginPageKey),
                     ),
                     const SizedBox(height: AppSize.s15),
                     CustomButtonBuilder(
                       color: ColorManager.bBlack,
-                      title: AppStrings.creatAccount,
+                      title: AppStrings.creatAccount.tr(),
                       onTap: () =>
                           Navigator.pushNamed(context, Routes.registerPageKey),
                     ),

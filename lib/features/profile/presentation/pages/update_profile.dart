@@ -10,7 +10,6 @@ import '../../../../core/resources/values_manager.dart';
 import '../widgets/edit_profile_widgets/edit_profile_txt.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-
 class UpdateProfilePage extends StatefulWidget {
   final ProfileEntity profile;
   const UpdateProfilePage({
@@ -79,7 +78,8 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                             child: IconButton(
                               icon: const Icon(Icons.camera_alt),
                               onPressed: () {
-                                ProfileCubit.get(context,listen: false).getProfileImage();
+                                ProfileCubit.get(context, listen: false)
+                                    .getProfileImage();
                               },
                             ),
                           ),
@@ -116,7 +116,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
           BlocConsumer<ProfileCubit, ProfileState>(listener: (context, state) {
         if (state is UpdatingSuccessState) {
           FlushbarHelper.createSuccess(message: 'success').show(context);
-          ProfileCubit.get(context,listen: false)
+          ProfileCubit.get(context, listen: false)
               .getProfile()
               .whenComplete(() => Navigator.pop(context));
         }
@@ -127,14 +127,19 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
             horizontal: AppPadding.p20,
           ),
           child: state is UpdataProfileLoadingState
-              ? const CircularProgressIndicator()
+              ? SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: AppSize.s50,
+                  child: const Center(child:  CircularProgressIndicator()),
+                )
               : CustomButtonBuilder(
                   onTap: () {
-                    ProfileCubit.get(context,listen: false).updateProfile(
+                    ProfileCubit.get(context, listen: false).updateProfile(
                       ProfileCubitData(
                         name: _nameController.text.trim(),
                         email: _emailController.text.trim(),
-                        image: ProfileCubit.get(context,listen: false).profileImage,
+                        image: ProfileCubit.get(context, listen: false)
+                            .profileImage,
                       ),
                     );
                   },

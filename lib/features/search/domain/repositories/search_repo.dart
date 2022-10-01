@@ -12,6 +12,7 @@ class SearchInput {
   final int count;
   final int page;
   final String? name;
+  final Map<String, int>? facilities;
   final String? address;
   final dynamic maxPrice;
   final dynamic minPrice;
@@ -23,6 +24,7 @@ class SearchInput {
     required this.page,
     this.name,
     this.address,
+    this.facilities,
     this.distance,
     this.latitude,
     this.longitude,

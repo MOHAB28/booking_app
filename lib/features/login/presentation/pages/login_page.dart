@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
     LoginCubit.get(context).init();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,16 +38,21 @@ class _LoginPageState extends State<LoginPage> {
       body: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            sl<SharedPreferences>()
-                .setString(isLoggedIn, state.data.authDataEntity.token)
-                .then(
-              (value) {
-                if (value) {
-                  token = sl<SharedPreferences>().getString(isLoggedIn);
-                  Navigator.pushReplacementNamed(context, Routes.layoutPage);
-                }
-              },
-            );
+            if (state.data.status != '0') {
+              sl<SharedPreferences>()
+                  .setString(isLoggedIn, state.data.authDataEntity.token)
+                  .then(
+                (value) {
+                  if (value) {
+                    token = sl<SharedPreferences>().getString(isLoggedIn);
+                    Navigator.pushReplacementNamed(context, Routes.layoutPage);
+                  }
+                },
+              );
+            } else {
+              FlushbarHelper.createError(message: state.data.titleEn)
+                  .show(context);
+            }
           }
         },
         builder: (context, state) {
@@ -61,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: AppSize.s20),
                 Row(
-                  children:  [
+                  children: [
                     Expanded(
                       child: FastAuthButton(
                         title: AppStrings.facebook.tr(),
@@ -101,6 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: cubit.passwordController,
                   keyboardType: TextInputType.text,
                   padding: EdgeInsets.zero,
+                  isObsecureText: true,
                   errorText: cubit.errorPassword,
                   hintText: AppStrings.enterPass.tr(),
                   onChanged: (txt) {},
@@ -143,6 +151,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
   @override
   void deactivate() {
     LoginCubit.get(context).dispose();

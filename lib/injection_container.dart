@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'features/facilities/domain/usecases/facilities_usecase.dart';
+import 'features/facilities/presentation/cubit/facilities_cubit.dart';
 import 'features/booking/data/datasources/booking_remote_data_sources.dart';
 import 'features/booking/data/repositories/booking_repo_impl.dart';
 import 'features/booking/domain/repositories/booking_repo.dart';
@@ -8,6 +10,9 @@ import 'features/booking/domain/usecases/create_booking_usecase.dart';
 import 'features/booking/domain/usecases/get_bookings_usecase.dart';
 import 'features/booking/domain/usecases/update_booking_usecase.dart';
 import 'features/booking/presentation/cubit/booking_cubit.dart';
+import 'features/facilities/data/datasources/facilities_remote_data_sources.dart';
+import 'features/facilities/data/repositories/facilities_repo_impl.dart';
+import 'features/facilities/domain/repositories/facilities_repo.dart';
 import 'features/profile/domain/usecases/update_profile_use_case.dart';
 import 'features/profile/data/datasources/get_profile_remote_data_source.dart';
 import 'features/profile/data/repositories/profile_repository_implementaion.dart';
@@ -58,6 +63,10 @@ Future<void> init() async {
   );
 
   sl.registerFactory(
+    () => FacilitiesCubit(sl()),
+  );
+
+  sl.registerFactory(
     () => ProfileCubit(sl(), sl()),
   );
 
@@ -76,13 +85,16 @@ Future<void> init() async {
   sl.registerLazySingleton(() => RegisterUsecase(sl()));
   sl.registerLazySingleton(() => GetProfileUseCase(sl()));
   sl.registerLazySingleton(() => UpdateProfileUseCase(sl()));
-
+  sl.registerLazySingleton(() => FacilitiesUsecase(sl()));
   sl.registerLazySingleton(() => CreateBookingUsecase(sl()));
   sl.registerLazySingleton(() => UpdateBookingUsecase(sl()));
   sl.registerLazySingleton(() => GetBookingUsecase(sl()));
   sl.registerLazySingleton(() => SearchUsecase(sl()));
   // Repository
 
+  sl.registerLazySingleton<FacilitiesRepo>(
+    () => FacilitiesRepoImpl(sl(), sl()),
+  );
   sl.registerLazySingleton<LoginRepo>(
     () => LoginRepoImpl(sl(), sl()),
   );
@@ -104,6 +116,9 @@ Future<void> init() async {
 
   sl.registerLazySingleton<LoginRemoteDataSources>(
     () => LoginRemoteDataSourcesImpl(sl()),
+  );
+  sl.registerLazySingleton<FacilitiesRemoteDataSources>(
+    () => FacilitiesRemoteDataSourcesImpl(sl()),
   );
   sl.registerLazySingleton<SearchRemoteDataSources>(
     () => SearchRemoteDataSourcesImpl(sl()),

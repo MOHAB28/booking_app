@@ -2,6 +2,7 @@ import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:phase3/features/facilities/presentation/cubit/facilities_cubit.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../login/presentation/widgets/custom_button_builder.dart';
@@ -81,6 +82,80 @@ class _EditFilterPageState extends State<EditFilterPage> {
                 _currentSliderValue = values;
               }),
             ),
+            const SizedBox(height: AppSize.s10),
+            const Divider(),
+            const SizedBox(height: AppSize.s10),
+            BlocConsumer<FacilitiesCubit, FacilitiesState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                var cubit =
+                    BlocProvider.of<FacilitiesCubit>(context).facilitiesEntity;
+                if (cubit != null) {
+                  if (cubit.facilities.isNotEmpty) {
+                    return Wrap(
+                      runSpacing: 16.0,
+                      spacing: 16.0,
+                      children: [
+                        ...cubit.facilities
+                            .asMap()
+                            .map(
+                              (key, value) => MapEntry(
+                                key,
+                                InkWell(
+                                  onTap: () {
+                                    BlocProvider.of<FacilitiesCubit>(context)
+                                        .selectFacility(value.id);
+                                  },
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: Container(
+                                    width: 80.0,
+                                    height: 80.0,
+                                    padding: const EdgeInsets.all(8.0),
+                                    decoration: BoxDecoration(
+                                      color: BlocProvider.of<FacilitiesCubit>(
+                                                  context)
+                                              .selectedFacilities
+                                              .any((element) =>
+                                                  element == value.id)
+                                          ? Colors.teal
+                                          : Colors.white,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 1,
+                                          blurRadius: 7,
+                                          offset: const Offset(0,
+                                              3), // changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: Image.network(value.image),
+                                        ),
+                                        const SizedBox(
+                                          height: 8.0,
+                                        ),
+                                        Text(
+                                          value.name,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                            .values
+                            .toList()
+                      ],
+                    );
+                  }
+                }
+                return const SizedBox();
+              },
+            ),
           ],
         ),
       ),
@@ -112,6 +187,21 @@ class _EditFilterPageState extends State<EditFilterPage> {
                     minPrice: selectedRange.start,
                     maxPrice: selectedRange.end,
                     distance: _currentSliderValue,
+                    facilities: BlocProvider.of<FacilitiesCubit>(context)
+                            .selectedFacilities
+                            .isNotEmpty
+                        ? {
+                            ...BlocProvider.of<FacilitiesCubit>(context)
+                                .selectedFacilities
+                                .asMap()
+                                .map(
+                                  (key, value) => MapEntry(
+                                    'facilities[$key]',
+                                    value,
+                                  ),
+                                ),
+                          }
+                        : null,
                   ),
                   title: AppStrings.apply.tr(),
                 ),

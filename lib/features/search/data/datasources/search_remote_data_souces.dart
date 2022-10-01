@@ -18,6 +18,7 @@ class SearchRemoteDataSourcesImpl implements SearchRemoteDataSources {
       query: {
         'count': input.count,
         'page': input.page,
+        if (input.facilities != null) ...input.facilities!,
         if (input.name != null) 'name': input.name,
         if (input.address != null) 'address': input.address,
         if (input.maxPrice != null) 'max_price': input.maxPrice,

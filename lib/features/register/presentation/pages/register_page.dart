@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,14 +17,12 @@ import '../cubit/register_cubit.dart';
 import '../cubit/register_state.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
-
 
 class _RegisterPageState extends State<RegisterPage> {
   @override
@@ -39,16 +38,21 @@ class _RegisterPageState extends State<RegisterPage> {
       body: BlocConsumer<RegisterCubit, RegisterState>(
         listener: (context, state) {
           if (state is RegisterSuccess) {
-            sl<SharedPreferences>()
-                .setString(isLoggedIn, state.data.authDataEntity.token)
-                .then(
-              (value) {
-                if (value) {
-                  token = sl<SharedPreferences>().getString(isLoggedIn);
-                  Navigator.pushReplacementNamed(context, Routes.layoutPage);
-                }
-              },
-            );
+            if (state.data.status != '0') {
+              sl<SharedPreferences>()
+                  .setString(isLoggedIn, state.data.authDataEntity.token)
+                  .then(
+                (value) {
+                  if (value) {
+                    token = sl<SharedPreferences>().getString(isLoggedIn);
+                    Navigator.pushReplacementNamed(context, Routes.layoutPage);
+                  }
+                },
+              );
+            } else {
+              FlushbarHelper.createError(message: state.data.titleEn)
+                  .show(context);
+            }
           }
         },
         builder: (context, state) {
@@ -64,7 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 const SizedBox(height: AppSize.s20),
                 Row(
-                  children:  [
+                  children: [
                     Expanded(
                       child: FastAuthButton(
                         title: AppStrings.facebook.tr(),
@@ -73,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     const SizedBox(width: AppSize.s10),
-                     Expanded(
+                    Expanded(
                       child: FastAuthButton(
                         title: AppStrings.twitter.tr(),
                         color: ColorManager.bTwitter,
@@ -136,7 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   )
                 ] else ...[
                   CustomButtonBuilder(
-                    title: AppStrings.login.tr(),
+                    title: AppStrings.creatAccount.tr(),
                     onTap: () {
                       if (cubit.allValidation()) {
                         cubit.register(

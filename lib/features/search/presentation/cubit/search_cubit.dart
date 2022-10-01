@@ -23,10 +23,12 @@ class SearchCubit extends Cubit<SearchState> {
     String? address,
     dynamic maxPrice,
     dynamic minPrice,
+    Map<String, int>? facilities,
     double? latitude,
     double? longitude,
     dynamic distance,
   }) async {
+    print(facilities);
     emit(SearchLoading());
     final successOrFailure = await searchUsecase(
       SearchUsecaseInput(
@@ -38,6 +40,7 @@ class SearchCubit extends Cubit<SearchState> {
         latitude: latitude,
         longitude: longitude,
         maxPrice: maxPrice,
+        facilities: facilities,
         minPrice: minPrice,
       ),
     );
