@@ -64,4 +64,6 @@ class AppStrings {
   static const String noHotel = 'no_hotel';
   static const String facilities = 'facilities';
   static const String viewHotels = 'view_hotels';
+  static const String confirmPasswordError = 'confirm_pass_error';
+
 }
