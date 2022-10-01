@@ -38,7 +38,8 @@ With this app you can browse in hotels and search for specific hotel and there i
   bloc: ^8.1.0
 ```
 
-## Directory Structure
+
+## Directory Structure for project
 
 ```
 ├───core
