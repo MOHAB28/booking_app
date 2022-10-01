@@ -28,7 +28,6 @@ class SearchCubit extends Cubit<SearchState> {
     double? longitude,
     dynamic distance,
   }) async {
-    print(facilities);
     emit(SearchLoading());
     final successOrFailure = await searchUsecase(
       SearchUsecaseInput(
